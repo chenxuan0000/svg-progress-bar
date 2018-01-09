@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <div id="app">
+            <vue-progress-bar :options="options"></vue-progress-bar>
+            <vue-progress-bar :options="options1"></vue-progress-bar>
+        </div>
+    </body>
+    <script src="https://cdn.bootcss.com/vue/2.5.9/vue.js"></script>
+    <script src="../dist/vue-progress-bar.min.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {},
+        computed: {
+          options () {
+            return {
+              radius: 80,
+              value: 60.29,
+              text: function (value) {
+                return this.htmlifyNumber(value) + '<span style="font-size: 0.4em;">%</span>';
+              },
+              type: 'rect',
+              rectWidth: 600,
+              rectHeight: 50,
+              rectRadius: 25,
+            }
+          },
+          options1 () {
+            return {
+              radius: 80,
+              value: 60.29,
+              text: function (value) {
+                return this.htmlifyNumber(value) + '<span style="font-size: 0.4em;">%</span>';
+              },
+              duration: 200
+            }
+          }
+        }
+      })
+    </script>
+</html>
