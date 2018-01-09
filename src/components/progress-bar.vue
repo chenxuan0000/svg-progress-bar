@@ -36,7 +36,7 @@
         dom: this.$refs.progress,
         type: this.options.type,
         radius: this.options.radius,
-        width: this.options.width,
+        circleWidth: this.options.circleWidth,
         maxValue: this.options.maxValue,
         value: this.options.value,
         text: this.options.text,

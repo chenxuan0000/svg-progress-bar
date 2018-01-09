@@ -19,7 +19,7 @@ let requestAnimFrame = window.requestAnimationFrame ||
     this._text = options.text === undefined ? function (value) {
       return this.htmlifyNumber(value)
     } : options.text   // 文字格式
-    this._strokeWidth = options.width || 10   // circle的圆环宽度
+    this._strokeWidth = options.circleWidth || 10   // circle的圆环宽度
     this._colors = options.pathColors || ['#EEE', '#F00'] //path的fill颜色
     this._textColor = options.textColor || '#000'
     this._value = 0
