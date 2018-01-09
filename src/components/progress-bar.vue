@@ -19,6 +19,12 @@
         default: () => {
           return {}
         }
+      },
+      value: {
+        type: [Number, String]
+      },
+      type: {
+        type: String
       }
     },
     computed: {},
@@ -34,11 +40,12 @@
     mounted () {
       this.vueProgress = vueProgress.create({
         dom: this.$refs.progress,
-        type: this.options.type,
+        type: this.type,
         radius: this.options.radius,
         circleWidth: this.options.circleWidth,
+        circleLinecap: this.options.circleLinecap,
         maxValue: this.options.maxValue,
-        value: this.options.value,
+        value: this.value,
         text: this.options.text,
         textColor: this.options.textColor,
         pathColors: this.options.pathColors,

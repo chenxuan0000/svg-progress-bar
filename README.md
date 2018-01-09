@@ -1,12 +1,12 @@
 # vue-progress-bar 
-> A simple,process bar for Vue.js
+> A simple,progress bar for Vue.js
 [![Build Status](https://img.shields.io/appveyor/ci/gruntjs/grunt/master.svg) ![LICENSE MIT](https://img.shields.io/npm/l/express.svg)](https://www.npmjs.com/package/vue-seamless-scroll) ![](https://img.shields.io/npm/v/vue-seamless-scroll.svg)
                                          
 <p align="center">
     <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2176389216,1520905711&fm=27&gp=0.jpg" width="350"/>
 </p>                                          
 <p align="center">
-    🐾 <a href="#快速入门" target="_blank">快速开始</a> | 
+    🐾 <a href="#快速开始" target="_blank">快速开始</a> | 
     🌾 <a href="README.md">English Document</a>
 </p>
 
@@ -23,8 +23,8 @@
 * [x] 目前支持圆环/矩形的进度条
 * [x] 持续维护
 
+#快速开始
 ## 安装
-
 ### NPM
 
 ```bash
@@ -76,6 +76,7 @@ new Vue({
 | `type`|type of the progress bar|`'circle'`|`'circle'` `'rect'`|
 |`radius`|radius of the circle progress bar|`50`|`Number`|
 |`circleWidth`|stoke-width of the circle progress bar|`10`|`Number`|
+|`circleLinecap`|circleLinecap of the circle progress bar|`''`|`'round',''`|
 |`maxValue`|maxValue of the progress bar|`100`|`Number`|
 |`text`|text of the progress bar|`function (value) {return this.htmlifyNumber(value)}`|`Function`|
 |`textColor`|text color of the progress bar|`#000`|`color`|

@@ -1,7 +1,7 @@
 {
   "name": "vue-progress-bar",
   "version": "0.0.1",
-  "description": "A simple,process bar for Vue.js",
+  "description": "A simple,progress bar for Vue.js",
   "main": "dist/vue-progress-bar.min.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.dev.js --open --inline --hot",

@@ -10,8 +10,8 @@ let requestAnimFrame = window.requestAnimationFrame ||
     let endAngleRad = Math.PI / 180 * 270
     this._el = options.dom  //绑定的dom节点
     this._type = options.type || 'circle' //svg进度条类型（circle/rect）
-    this._rectWidth = options.rectWidth || 400 //rect的宽度
-    this._rectHeight = options.rectHeight || 40 //rect的高度
+    this._rectWidth = options.rectWidth || 200 //rect的宽度
+    this._rectHeight = options.rectHeight || 20 //rect的高度
     this._rectRadius = options.rectRadius || 0  //rect的圆角半径
     this._radius = options.radius || 50 //circle的半径
     this._duration = options.duration === undefined ? 500 : options.duration //动画时间
@@ -20,6 +20,7 @@ let requestAnimFrame = window.requestAnimationFrame ||
       return this.htmlifyNumber(value)
     } : options.text   // 文字格式
     this._strokeWidth = options.circleWidth || 10   // circle的圆环宽度
+    this._circleLinecap = options.circleLinecap   // circle的strokelinecap属性定义不同类型的开放路径的终结：
     this._colors = options.pathColors || ['#EEE', '#F00'] //path的fill颜色
     this._textColor = options.textColor || '#000'
     this._value = 0
@@ -138,6 +139,7 @@ vueProgress.prototype = {
       })
       path.setAttribute('d', this._calculatePath(percentage, open))
       path.setAttribute('class', pathClass)
+      path.setAttribute('stroke-linecap', this._circleLinecap)
     } else if (this._type === 'rect') {
       path = document.createElementNS('http://www.w3.org/2000/svg', 'rect')
       let rectStyle = {
