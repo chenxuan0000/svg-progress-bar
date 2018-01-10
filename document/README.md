@@ -6,8 +6,8 @@
     <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2176389216,1520905711&fm=27&gp=0.jpg" width="350"/>
 </p>                                          
 <p align="center">
-    🐾 <a href="#快速开始" target="_blank">快速开始</a> | 
-    📘 <a href="https://github.com/chenxuan0000/svg-progress-bar/index.html" target="_blank">在线demo</a> |
+    🐾 <a>[快速开始](#快速开始)</a> | 
+    📘 <a href="https://chenxuan0000.github.io/svg-progress-bar/" target="_blank">在线demo</a> |
     🌾 <a href="../README.md">英文文档</a>
 </p>
 
@@ -74,18 +74,18 @@ new Vue({
 ## 配置参数
 |key|description|defualt|options|
 |:---|---|---|---|
-| `type`|type of the progress bar|`'circle'`|`'circle'` `'rect'`|
-|`radius`|radius of the circle progress bar|`50`|`Number`|
-|`circleWidth`|stoke-width of the circle progress bar|`10`|`Number`|
-|`circleLinecap`|circleLinecap of the circle progress bar|`''`|`'round',''`|
-|`maxValue`|maxValue of the progress bar|`100`|`Number`|
-|`text`|text of the progress bar|`function (value) {return this.htmlifyNumber(value)}`|`Function`|
-|`textColor`|text color of the progress bar|`#000`|`color`|
-|`pathColors`|pathColors of the progress bar|`['#EEE', '#F00']`|`Array`|
-|`duration`|duration of the progress bar|`500`|`Number`|
-|`rectWidth`|rectWidth of the rect progress bar|`400`|`Number`|
-|`rectHeight`|rectHeight of the rect progress bar|`40`|`Number`|
-|`rectRadius`|rectRadius of the rect progress bar|`0`|`Number`|
+| `type`|进度条类型|`'circle'`|`'circle'` `'rect'`|
+|`radius`|环形进度条半径|`50`|`Number`|
+|`circleWidth`|环形进度条线宽|`10`|`Number`|
+|`circleLinecap`|环形进度条的边角形状|`''`|`'round',''`|
+|`maxValue`|进度条的最大值|`100`|`Number`|
+|`text`|进度条的文本格式|`function (value) {return this.htmlifyNumber(value)}`|`Function`|
+|`textColor`|进度条的文本颜色|`#000`|`color`|
+|`pathColors`|进度条填充的颜色队列|`['#EEE', '#F00']`|`Array`|
+|`duration`|进度条的动画时间|`500`|`Number`|
+|`rectWidth`|矩形进度条的宽度|`400`|`Number`|
+|`rectHeight`|矩形进度条的高度|`40`|`Number`|
+|`rectRadius`|矩形进度条的圆角度|`0`|`Number`|
 
 
 ## License
