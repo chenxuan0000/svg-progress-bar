@@ -6,7 +6,6 @@
     <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2176389216,1520905711&fm=27&gp=0.jpg" width="350"/>
 </p>                                          
 <p align="center">
-    🐾 <a>[快速开始](#快速开始)</a> | 
     📘 <a href="https://chenxuan0000.github.io/svg-progress-bar/" target="_blank">在线demo</a> |
     🌾 <a href="../README.md">英文文档</a>
 </p>
@@ -24,7 +23,6 @@
 * [x] 目前支持圆环/矩形的进度条
 * [x] 持续维护
 
-# 快速开始
 ## 安装
 ### NPM
 
