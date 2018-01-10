@@ -49,7 +49,14 @@
                         <div :class="label_cls">Custom circleLinecap ('round')</div>
                         <div class="tc">
                             <progress-bar value="65.55"
-                                          :options="{circleLinecap: 'round'}"></progress-bar>
+                                          :options="{circleLineCap: 'round'}"></progress-bar>
+                        </div>
+                    </div>
+                    <div :class="box_cls" :style="box_style">
+                        <div :class="label_cls">Custom gradientColor (['rgb(33, 150, 243)','rgb(255, 0, 0)'])</div>
+                        <div class="tc">
+                            <progress-bar value="65.55"
+                                          :options="{gradientColor: ['rgb(33, 150, 243)','rgb(255, 0, 0)']}"></progress-bar>
                         </div>
                     </div>
                     <div :class="box_cls" :style="box_style">
@@ -71,6 +78,15 @@
                         <div class="tc">
                             <progress-bar value="65" type="rect"
                                           :options="{rectWidth:380,rectHeight:28,rectRadius:14}"></progress-bar>
+                        </div>
+                    </div>
+                    <div :class="box_cls" :style="box_style">
+                        <div :class="label_cls">
+                            Custom rect width gradientColor (gradientColor:['rgb(33, 150, 243)','rgb(0, 0, 0)'])
+                        </div>
+                        <div class="tc">
+                            <progress-bar value="65" type="rect"
+                                          :options="{gradientColor: ['rgb(33, 150, 243)','rgb(0, 0, 0)']}"></progress-bar>
                         </div>
                     </div>
                 </div>

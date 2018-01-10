@@ -1,6 +1,6 @@
 {
   "name": "svg-progress-bar",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A simple,progress bar for Vue.js",
   "main": "dist/svg-progress-bar.min.js",
   "scripts": {

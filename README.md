@@ -1,5 +1,6 @@
 # svg-progress-bar
 > A simple,progress bar for Vue.js
+
 [![Build Status](https://img.shields.io/appveyor/ci/gruntjs/grunt/master.svg) ![LICENSE MIT](https://img.shields.io/npm/l/express.svg)](https://www.npmjs.com/package/svg-progress-bar) ![](https://img.shields.io/npm/v/svg-progress-bar.svg)
                                          
 <p align="center">
@@ -81,6 +82,8 @@ Example:
 |`text`|text of the progress bar|`function (value) {return this.htmlifyNumber(value)}`|`Function`|
 |`textColor`|text color of the progress bar|`#000`|`color`|
 |`pathColors`|pathColors of the progress bar|`['#EEE', '#F00']`|`Array`|
+|`gradientColor`|gradientColor of the progress bar|`null`|`Array`|
+|`gradientOpacity`|gradientOpacity of the progress bar|`[1,1]`|`Array`|
 |`duration`|duration of the progress bar|`500`|`Number`|
 |`rectWidth`|rectWidth of the rect progress bar|`400`|`Number`|
 |`rectHeight`|rectHeight of the rect progress bar|`40`|`Number`|

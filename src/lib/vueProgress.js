@@ -20,8 +20,10 @@ let requestAnimFrame = window.requestAnimationFrame ||
       return this.htmlifyNumber(value)
     } : options.text   // 文字格式
     this._strokeWidth = options.circleWidth || 10   // circle的圆环宽度
-    this._circleLinecap = options.circleLinecap   // circle的strokelinecap属性定义不同类型的开放路径的终结：
+    this._circleLineCap = options.circleLineCap   // circle的strokelinecap属性定义不同类型的开放路径的终结：
     this._colors = options.pathColors || ['#EEE', '#F00'] //path的fill颜色
+    this._gradientColor = options.gradientColor //第二个rect/path的渐变色
+    this._gradientOpacity = options.gradientOpacity || [1, 1] //第二个rect/path的渐变色的透明度
     this._textColor = options.textColor || '#000'
     this._value = 0
     this._svg = null
@@ -129,21 +131,29 @@ vueProgress.prototype = {
   },
 
   _generatePath: function (percentage, open, color, pathClass) {
-    let path
+    let path,
+      now = +new Date();
+    if (this._gradientColor && open) {
+      // 有渐变色
+      this._svg.innerHTML += `<defs><linearGradient id="${now}" spreadMethod="pad">
+                   <stop offset="0%" stop-color="${this._gradientColor[0]}" stop-opacity="${this._gradientOpacity[0]}"></stop>
+                    <stop offset="100%" stop-color="${this._gradientColor[1]}" stop-opacity="${this._gradientOpacity[1]}"></stop>
+                       </linearGradient></defs>`
+    }
     if (this._type === 'circle') {
       path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
       this._setCss(path, {
         'fill': 'transparent',
-        'stroke': color,
+        'stroke': (this._gradientColor && open) ? `url(#${now})` : color,
         'stroke-width': this._strokeWidth
       })
       path.setAttribute('d', this._calculatePath(percentage, open))
       path.setAttribute('class', pathClass)
-      path.setAttribute('stroke-linecap', this._circleLinecap)
+      this._circleLineCap && path.setAttribute('stroke-linecap', this._circleLineCap)
     } else if (this._type === 'rect') {
       path = document.createElementNS('http://www.w3.org/2000/svg', 'rect')
       let rectStyle = {
-        'fill': color,
+        'fill': (this._gradientColor && open) ? `url(#${now})` : color,
         'width': this._rectWidth * percentage / 100 + 'px',
         'height': this._rectHeight + 'px'
       }

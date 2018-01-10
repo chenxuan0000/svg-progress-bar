@@ -1,5 +1,6 @@
 # svg-progress-bar
 > 基于Vue.js的简单的svg进度条
+
 [![Build Status](https://img.shields.io/appveyor/ci/gruntjs/grunt/master.svg) ![LICENSE MIT](https://img.shields.io/npm/l/express.svg)](https://www.npmjs.com/package/svg-progress-bar) ![](https://img.shields.io/npm/v/svg-progress-bar.svg)
                                          
 <p align="center">
@@ -80,6 +81,8 @@ new Vue({
 |`text`|进度条的文本格式|`function (value) {return this.htmlifyNumber(value)}`|`Function`|
 |`textColor`|进度条的文本颜色|`#000`|`color`|
 |`pathColors`|进度条填充的颜色队列|`['#EEE', '#F00']`|`Array`|
+|`gradientColor`|进度条填充的渐变色|`null`|`Array`|
+|`gradientOpacity`|进度条填充的渐变色透明度|`[1,1]`|`Array`|
 |`duration`|进度条的动画时间|`500`|`Number`|
 |`rectWidth`|矩形进度条的宽度|`400`|`Number`|
 |`rectHeight`|矩形进度条的高度|`40`|`Number`|
