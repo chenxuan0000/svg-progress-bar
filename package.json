@@ -1,8 +1,8 @@
 {
-  "name": "vue-progress-bar",
-  "version": "0.0.1",
+  "name": "svg-progress-bar",
+  "version": "0.0.2",
   "description": "A simple,progress bar for Vue.js",
-  "main": "dist/vue-progress-bar.min.js",
+  "main": "dist/svg-progress-bar.min.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.dev.js --open --inline --hot",
     "build:debug": "cross-env NODE_ENV=debug webpack --config build/webpack.dist.js",
@@ -13,13 +13,13 @@
   "author": "chenxuan",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chenxuan0000/vue-progress-bar"
+    "url": "git+https://github.com/chenxuan0000/svg-progress-bar"
   },
   "keywords": [
     "vue",
     "vuejs",
-    "ui",
     "components",
+    "svg",
     "progress",
     "bar"
   ],

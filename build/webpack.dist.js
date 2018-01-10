@@ -7,9 +7,9 @@ const base = require('./webpack.base.js')
 const config = merge(base, {
   entry: options.paths.resolve('src/index.js'),
   output: {
-    filename: options.isProduction ? 'vue-progress-bar.min.js' : 'vue-progress-bar.js',
+    filename: options.isProduction ? 'svg-progress-bar.min.js' : 'svg-progress-bar.js',
     path: options.paths.output.main,
-    library: 'vueProgressBar',
+    library: 'svgProgressBar',
     libraryExport: 'default',
     libraryTarget: 'umd'
   },
