@@ -666,6 +666,7 @@ var requestAnimFrame = window.requestAnimationFrame || window.webkitRequestAnima
   this._start = -Math.PI / 180 * 90;
   this._startPrecise = this._precise(this._start);
   this._circ = endAngleRad - this._start;
+  this._NS_SVG = 'http://www.w3.org/2000/svg';
   this._generate().update(options.value || 0);
 };
 
@@ -690,7 +691,7 @@ vueProgress.prototype = {
     if (this._type === 'circle') {
       this._movingPath.setAttribute('d', this._calculatePath(percentage, true));
     } else if (this._type === 'rect') {
-      this._movingPath.style.width = this._rectWidth * percentage / 100 + 'px';
+      this._movingPath.setAttribute('width', this._rectWidth * percentage / 100);
     }
     this._textContainer.innerHTML = this._getText(this.getValueFromPercent(percentage));
   },
@@ -741,8 +742,8 @@ vueProgress.prototype = {
   },
 
   _generateSvg: function _generateSvg() {
-    this._svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    this._svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    this._svg = document.createElementNS(this._NS_SVG, 'svg');
+    this._svg.setAttribute('xmlns', this._NS_SVG);
 
     this._generatePath(100, false, this._colors[0], this._maxValClass)._generatePath(1, true, this._colors[1], this._valClass);
     if (this._type === 'circle') {
@@ -762,10 +763,24 @@ vueProgress.prototype = {
     var path = void 0,
         now = +new Date();
     if (this._gradientColor && open) {
-      this._svg.innerHTML += '<defs><linearGradient id="' + now + '" spreadMethod="pad" x1="0%" y1="0%" x2="100%" y2="0%">\n                   <stop offset="0%" stop-color="' + this._gradientColor[0] + '" stop-opacity="' + this._gradientOpacity[0] + '"></stop>\n                    <stop offset="100%" stop-color="' + this._gradientColor[1] + '" stop-opacity="' + this._gradientOpacity[1] + '"></stop>\n                       </linearGradient></defs>';
+      var defs = document.createElementNS(this._NS_SVG, 'defs');
+      var linearGradient = document.createElementNS(this._NS_SVG, 'linearGradient');
+      linearGradient.id = now;
+      var stop1 = document.createElementNS(this._NS_SVG, 'stop');
+      stop1.setAttribute('offset', '0%');
+      stop1.setAttribute('stop-color', this._gradientColor[0]);
+      stop1.setAttribute('stop-opacity', this._gradientOpacity[0]);
+      var stop2 = document.createElementNS(this._NS_SVG, 'stop');
+      stop2.setAttribute('offset', '100%');
+      stop2.setAttribute('stop-color', this._gradientColor[1]);
+      stop2.setAttribute('stop-opacity', this._gradientOpacity[1]);
+      linearGradient.appendChild(stop1);
+      linearGradient.appendChild(stop2);
+      defs.appendChild(linearGradient);
+      this._svg.appendChild(defs);
     }
     if (this._type === 'circle') {
-      path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path = document.createElementNS(this._NS_SVG, 'path');
       this._setCss(path, {
         'fill': 'transparent',
         'stroke': this._gradientColor && open ? 'url(#' + now + ')' : color,
@@ -775,14 +790,14 @@ vueProgress.prototype = {
       path.setAttribute('class', pathClass);
       this._circleLineCap && path.setAttribute('stroke-linecap', this._circleLineCap);
     } else if (this._type === 'rect') {
-      path = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      path = document.createElementNS(this._NS_SVG, 'rect');
       var rectStyle = {
-        'fill': this._gradientColor && open ? 'url(#' + now + ')' : color,
-        'width': this._rectWidth * percentage / 100 + 'px',
-        'height': this._rectHeight + 'px'
+        'fill': this._gradientColor && open ? 'url(#' + now + ')' : color
       };
       path.setAttribute('rx', this._rectRadius);
       path.setAttribute('ry', this._rectRadius);
+      path.setAttribute('width', this._rectWidth * percentage / 100);
+      path.setAttribute('height', this._rectHeight);
       this._setCss(path, rectStyle);
     }
     this._svg.appendChild(path);
