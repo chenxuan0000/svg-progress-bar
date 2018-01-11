@@ -136,7 +136,7 @@ vueProgress.prototype = {
   _generatePath: function (percentage, open, color, pathClass) {
     let path,
       now = +new Date();
-    if (this._gradientColor && open) {
+    if (this._gradientColor && open && this._type === 'rect') {
       // 有渐变色 兼容ie 不能用innerHtml直接写入
       let defs = document.createElementNS(this._NS_SVG, 'defs')
       let linearGradient = document.createElementNS(this._NS_SVG, 'linearGradient')
@@ -158,7 +158,7 @@ vueProgress.prototype = {
       path = document.createElementNS(this._NS_SVG, 'path')
       this._setCss(path, {
         'fill': 'transparent',
-        'stroke': (this._gradientColor && open) ? `url(#${now})` : color,
+        'stroke': color,
         'stroke-width': this._strokeWidthArray ? (open ? this._strokeWidthArray[1] : this._strokeWidthArray[0]) : this._strokeWidth
       })
       path.setAttribute('d', this._calculatePath(percentage, open))

@@ -16,7 +16,7 @@
             <div class="mb5 center" style="max-width: 57rem">
                 <div class="pt5 nb5">
                     <a href="#default-spinners" :class="header_cls">
-                        <h2 class="ma0 pb2 f2 fw4 lh-1">Default svg-progress-bar</h2>
+                        <h2 class="ma0 pb2 f2 fw4 lh-1">Default svg-progress-bar(缺省参数的svg-progress-bar)</h2>
                         <p class="ma0 lh-copy f6">
                             svg-progress-bar can be used with no configuration or very little configuration.</p>
                     </a>
@@ -39,7 +39,7 @@
                         <p class="ma0 lh-copy f6">vue-progress-bar can also have any arbitrary options .</p>
                     </a>
                     <div :class="box_cls" :style="box_style">
-                        <div :class="label_cls">Custom <span class="normal">color (['#999','rgb(33, 150, 243)'])</span>
+                        <div :class="label_cls">Custom <span class="normal">color(自定义路径颜色) (['#999','rgb(33, 150, 243)'])</span>
                         </div>
                         <div class="tc">
                             <progress-bar value="65.55"
@@ -47,23 +47,23 @@
                         </div>
                     </div>
                     <div :class="box_cls" :style="box_style">
-                        <div :class="label_cls">Custom <span class="normal">circleLinecap ('round')</span></div>
+                        <div :class="label_cls">Custom <span class="normal">circleLinecap(自定义闭合为圆角) ('round')</span></div>
                         <div class="tc">
                             <progress-bar value="65.55"
                                           :options="{circleLineCap: 'round'}"></progress-bar>
                         </div>
                     </div>
                     <div :class="box_cls" :style="box_style">
-                        <div :class="label_cls">Custom <span class="normal"> gradientColor (['rgb(219, 60, 36)','rgb(243, 182, 109)'])</span>
+                        <div :class="label_cls">Custom <span class="normal"> fan of svg circleWidth === radius(自定义为扇形) )</span>
                         </div>
                         <div class="tc">
-                            <progress-bar value="60"
-                                          :options="{radius:189,circleWidth:20,gradientColor: ['rgb(219, 60, 36)','rgb(243, 182, 109)']}"></progress-bar>
+                            <progress-bar value="100"
+                                          :options="{radius:130,circleWidth:130,duration: 3000,pathColors: ['#bbb','rgb(33, 150, 243)']}"></progress-bar>
                         </div>
                     </div>
                     <div :class="box_cls" :style="box_style">
                         <div :class="label_cls">Custom Wide ranging <span
-                                class="normal"> circleWidthArray ([10,20])</span></div>
+                                class="normal"> circleWidthArray (自定义两条路径宽度) ([10,20])</span></div>
                         <div class="tc">
                             <progress-bar value="70"
                                           :options="{radius:189,circleLineCap: 'round',circleWidthArray: [10,20]}"></progress-bar>
@@ -71,28 +71,28 @@
                     </div>
                     <div :class="box_cls" :style="box_style">
                         <div :class="label_cls">Custom Wide ranging <span
-                                class="normal"> circleWidthArray ([30,15])</span></div>
+                                class="normal"> circleWidthArray (自定义两条路径宽度) ([30,15])</span></div>
                         <div class="tc">
                             <progress-bar value="70"
                                           :options="{radius:189,circleLineCap: 'round',circleWidthArray: [30,15]}"></progress-bar>
                         </div>
                     </div>
                     <div :class="box_cls" :style="box_style">
-                        <div :class="label_cls">Custom <span class="normal">text (text: func , textColor: 'rgb(33, 150, 243)')</span>
+                        <div :class="label_cls">Custom <span class="normal">text (自定义文本格式) (text: func , textColor: 'rgb(33, 150, 243)')</span>
                         </div>
                         <div class="tc">
                             <progress-bar value="65.55" :options="options1"></progress-bar>
                         </div>
                     </div>
                     <div :class="box_cls" :style="box_style">
-                        <div :class="label_cls">Custom duration <span class="normal">(duration: 150)</span></div>
+                        <div :class="label_cls">Custom duration (自定义动画执行时间) <span class="normal">(duration: 150)</span></div>
                         <div class="tc">
                             <progress-bar value="65.55" :options="{duration:150}"></progress-bar>
                         </div>
                     </div>
                     <div :class="box_cls" :style="box_style">
                         <div :class="label_cls">
-                            Custom rect <span class="normal">width height rectRadius (rectWidth: 380,rectHeight: 28,rectRadius:14)</span>
+                            Custom rect <span class="normal">width height rectRadius (自定义rect的大小和圆角弧度) (rectWidth: 380,rectHeight: 28,rectRadius:14)</span>
                         </div>
                         <div class="tc">
                             <progress-bar value="65" type="rect"
@@ -101,7 +101,7 @@
                     </div>
                     <div :class="box_cls" :style="box_style">
                         <div :class="label_cls">
-                            Custom rect <span class="normal">width gradientColor (gradientColor:['rgb(33, 150, 243)','rgb(0, 0, 0)'])</span>
+                            Custom rect <span class="normal">width gradientColor (自定义rect的渐变色) (gradientColor:['rgb(33, 150, 243)','rgb(0, 0, 0)'])</span>
                         </div>
                         <div class="tc">
                             <progress-bar value="16" type="rect"
@@ -110,7 +110,7 @@
                     </div>
                     <div :class="box_cls" :style="box_style">
                         <div :class="label_cls">
-                            Custom rect <span class="normal">no text (text:func)</span>
+                            Custom rect <span class="normal">no text (无文本)(text:func)</span>
                         </div>
                         <div class="tc">
                             <progress-bar value="26" type="rect"
@@ -152,19 +152,6 @@
       },
       cell_cls () {
         return 'ph1 pv1 ba b--moon-gray'
-      },
-      options () {
-        return {
-          radius: 80,
-          value: 60.29,
-          text: function (value) {
-            return this.htmlifyNumber(value) + '<span style="font-size: 0.4em;">%</span>';
-          },
-          type: 'rect',
-          rectWidth: 600,
-          rectHeight: 50,
-          rectRadius: 25,
-        }
       },
       options1 () {
         return {
