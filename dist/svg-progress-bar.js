@@ -602,6 +602,7 @@ exports.default = {
       type: this.type,
       radius: this.options.radius,
       circleWidth: this.options.circleWidth,
+      circleWidthArray: this.options.circleWidthArray,
       circleLineCap: this.options.circleLineCap,
       maxValue: this.options.maxValue,
       value: this.value,
@@ -645,6 +646,7 @@ var requestAnimFrame = window.requestAnimationFrame || window.webkitRequestAnima
     return this.htmlifyNumber(value);
   } : options.text;
   this._strokeWidth = options.circleWidth || 10;
+  this._strokeWidthArray = options.circleWidthArray;
   this._circleLineCap = options.circleLineCap;
   this._colors = options.pathColors || ['#EEE', '#F00'];
   this._gradientColor = options.gradientColor;
@@ -670,7 +672,8 @@ var requestAnimFrame = window.requestAnimationFrame || window.webkitRequestAnima
 vueProgress.prototype = {
   _generate: function _generate() {
     this._svgSize = this._radius * 2;
-    this._radiusAdjusted = this._radius - this._strokeWidth / 2;
+
+    this._radiusAdjusted = this._radius - (this._strokeWidthArray ? Math.max(this._strokeWidthArray[0], this._strokeWidthArray[1]) / 2 : this._strokeWidth / 2);
     this._generateSvg()._generateText()._generateWrapper();
     this._el.innerHTML = '';
     this._el.appendChild(this._wrapContainer);
@@ -766,7 +769,7 @@ vueProgress.prototype = {
       this._setCss(path, {
         'fill': 'transparent',
         'stroke': this._gradientColor && open ? 'url(#' + now + ')' : color,
-        'stroke-width': this._strokeWidth
+        'stroke-width': this._strokeWidthArray ? open ? this._strokeWidthArray[1] : this._strokeWidthArray[0] : this._strokeWidth
       });
       path.setAttribute('d', this._calculatePath(percentage, open));
       path.setAttribute('class', pathClass);

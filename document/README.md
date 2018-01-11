@@ -22,6 +22,7 @@
 ## 功能特性
 * [x] 零依赖,体积小
 * [x] 目前支持圆环/矩形的进度条
+* [x] 配置多满足多样需求
 * [x] 持续维护
 
 ## 安装
@@ -76,6 +77,7 @@ new Vue({
 | `type`|进度条类型|`'circle'`|`'circle'` `'rect'`|
 |`radius`|环形进度条半径|`50`|`Number`|
 |`circleWidth`|环形进度条线宽|`10`|`Number`|
+|`circleWidthArray`|如果你想要不等宽的环形条可以设置环形进度条线宽度组|`null`|`Array`|
 |`circleLinecap`|环形进度条的边角形状|`''`|`'round',''`|
 |`maxValue`|进度条的最大值|`100`|`Number`|
 |`text`|进度条的文本格式|`function (value) {return this.htmlifyNumber(value)}`|`Function`|

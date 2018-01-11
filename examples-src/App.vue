@@ -39,41 +39,60 @@
                         <p class="ma0 lh-copy f6">vue-progress-bar can also have any arbitrary options .</p>
                     </a>
                     <div :class="box_cls" :style="box_style">
-                        <div :class="label_cls">Custom color (['#999','rgb(33, 150, 243)'])</div>
+                        <div :class="label_cls">Custom <span class="normal">color (['#999','rgb(33, 150, 243)'])</span>
+                        </div>
                         <div class="tc">
                             <progress-bar value="65.55"
                                           :options="{pathColors: ['#999','rgb(33, 150, 243)']}"></progress-bar>
                         </div>
                     </div>
                     <div :class="box_cls" :style="box_style">
-                        <div :class="label_cls">Custom circleLinecap ('round')</div>
+                        <div :class="label_cls">Custom <span class="normal">circleLinecap ('round')</span></div>
                         <div class="tc">
                             <progress-bar value="65.55"
                                           :options="{circleLineCap: 'round'}"></progress-bar>
                         </div>
                     </div>
                     <div :class="box_cls" :style="box_style">
-                        <div :class="label_cls">Custom gradientColor (['rgb(219, 60, 36)','rgb(243, 182, 109)'])</div>
+                        <div :class="label_cls">Custom <span class="normal"> gradientColor (['rgb(219, 60, 36)','rgb(243, 182, 109)'])</span>
+                        </div>
                         <div class="tc">
-                            <progress-bar value="100"
-                                          :options="{radius:189,gradientColor: ['rgb(219, 60, 36)','rgb(243, 182, 109)']}"></progress-bar>
+                            <progress-bar value="60"
+                                          :options="{radius:189,circleWidth:20,gradientColor: ['rgb(219, 60, 36)','rgb(243, 182, 109)']}"></progress-bar>
                         </div>
                     </div>
                     <div :class="box_cls" :style="box_style">
-                        <div :class="label_cls">Custom text (text: func , textColor: 'rgb(33, 150, 243)')</div>
+                        <div :class="label_cls">Custom Wide ranging <span
+                                class="normal"> circleWidthArray ([10,20])</span></div>
+                        <div class="tc">
+                            <progress-bar value="70"
+                                          :options="{radius:189,circleLineCap: 'round',circleWidthArray: [10,20]}"></progress-bar>
+                        </div>
+                    </div>
+                    <div :class="box_cls" :style="box_style">
+                        <div :class="label_cls">Custom Wide ranging <span
+                                class="normal"> circleWidthArray ([30,15])</span></div>
+                        <div class="tc">
+                            <progress-bar value="70"
+                                          :options="{radius:189,circleLineCap: 'round',circleWidthArray: [30,15]}"></progress-bar>
+                        </div>
+                    </div>
+                    <div :class="box_cls" :style="box_style">
+                        <div :class="label_cls">Custom <span class="normal">text (text: func , textColor: 'rgb(33, 150, 243)')</span>
+                        </div>
                         <div class="tc">
                             <progress-bar value="65.55" :options="options1"></progress-bar>
                         </div>
                     </div>
                     <div :class="box_cls" :style="box_style">
-                        <div :class="label_cls">Custom duration (duration: 150)</div>
+                        <div :class="label_cls">Custom duration <span class="normal">(duration: 150)</span></div>
                         <div class="tc">
                             <progress-bar value="65.55" :options="{duration:150}"></progress-bar>
                         </div>
                     </div>
                     <div :class="box_cls" :style="box_style">
                         <div :class="label_cls">
-                            Custom rect width height rectRadius (rectWidth: 380,rectHeight: 28,rectRadius:14)
+                            Custom rect <span class="normal">width height rectRadius (rectWidth: 380,rectHeight: 28,rectRadius:14)</span>
                         </div>
                         <div class="tc">
                             <progress-bar value="65" type="rect"
@@ -82,19 +101,23 @@
                     </div>
                     <div :class="box_cls" :style="box_style">
                         <div :class="label_cls">
-                            Custom rect width gradientColor (gradientColor:['rgb(33, 150, 243)','rgb(0, 0, 0)'])
+                            Custom rect <span class="normal">width gradientColor (gradientColor:['rgb(33, 150, 243)','rgb(0, 0, 0)'])</span>
                         </div>
                         <div class="tc">
                             <progress-bar value="16" type="rect"
                                           :options="{gradientColor: ['rgb(33, 150, 243)','rgb(0, 0, 0)']}"></progress-bar>
                         </div>
                     </div>
-                    <i-circle :percent="20" size="390" stroke-width="8" trail-color="#e4e5e7" class="gauge">
-                        <p class="title">活动期间当前投资总额</p>
-                        <p class="money" v-text="111"></p>
-                    </i-circle>
+                    <div :class="box_cls" :style="box_style">
+                        <div :class="label_cls">
+                            Custom rect <span class="normal">no text (text:func)</span>
+                        </div>
+                        <div class="tc">
+                            <progress-bar value="26" type="rect"
+                                          :options="{text: ''}"></progress-bar>
+                        </div>
+                    </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -102,7 +125,6 @@
 
 <script>
   import progressBar from 'src/components/progress-bar.vue'
-  import iCircle from './iCircle'
 
   export default {
     name: 'app',
@@ -155,8 +177,7 @@
       }
     },
     components: {
-      progressBar,
-      iCircle
+      progressBar
     }
   }
 </script>

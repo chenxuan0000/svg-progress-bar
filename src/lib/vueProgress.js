@@ -19,7 +19,8 @@ let requestAnimFrame = window.requestAnimationFrame ||
     this._text = options.text === undefined ? function (value) {
       return this.htmlifyNumber(value)
     } : options.text   // 文字格式
-    this._strokeWidth = options.circleWidth || 10   // circle的圆环宽度
+    this._strokeWidth = options.circleWidth || 10   // 等宽circle的圆环宽度
+    this._strokeWidthArray = options.circleWidthArray  // circle的圆环宽度
     this._circleLineCap = options.circleLineCap   // circle的strokelinecap属性定义不同类型的开放路径的终结：
     this._colors = options.pathColors || ['#EEE', '#F00'] //path的fill颜色
     this._gradientColor = options.gradientColor //第二个rect/path的渐变色
@@ -45,7 +46,8 @@ let requestAnimFrame = window.requestAnimationFrame ||
 vueProgress.prototype = {
   _generate: function () {
     this._svgSize = this._radius * 2
-    this._radiusAdjusted = this._radius - (this._strokeWidth / 2)
+    // 如果参数不等宽 自动取符合的 _radiusAdjusted
+    this._radiusAdjusted = this._radius - (this._strokeWidthArray ? Math.max(this._strokeWidthArray[0], this._strokeWidthArray[1]) / 2 : this._strokeWidth / 2)
     this._generateSvg()._generateText()._generateWrapper()
     this._el.innerHTML = ''
     this._el.appendChild(this._wrapContainer)
@@ -145,7 +147,7 @@ vueProgress.prototype = {
       this._setCss(path, {
         'fill': 'transparent',
         'stroke': (this._gradientColor && open) ? `url(#${now})` : color,
-        'stroke-width': this._strokeWidth
+        'stroke-width': this._strokeWidthArray ? (open ? this._strokeWidthArray[1] : this._strokeWidthArray[0]) : this._strokeWidth
       })
       path.setAttribute('d', this._calculatePath(percentage, open))
       path.setAttribute('class', pathClass)

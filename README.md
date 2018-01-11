@@ -22,6 +22,7 @@
 ## Features
 * [x] zero dependence, small volume.
 * [x] currently supports loop/rectangle progress bar.
+* [x] the configuration meets a variety of requirements.
 * [x] ongoing maintenance
 
 ## Installation
@@ -76,7 +77,8 @@ Example:
 |:---|---|---|---|
 | `type`|type of the progress bar|`'circle'`|`'circle'` `'rect'`|
 |`radius`|radius of the circle progress bar|`50`|`Number`|
-|`circleWidth`|stoke-width of the circle progress bar|`10`|`Number`|
+|`circleWidth`|stokeWidth of the circle progress bar|`10`|`Number`|
+|`circleWidthArray`|circleWidthArray of the circle progress bar if you want wide ranging|`null`|`Array`|
 |`circleLinecap`|circleLinecap of the circle progress bar|`''`|`'round',''`|
 |`maxValue`|maxValue of the progress bar|`100`|`Number`|
 |`text`|text of the progress bar|`function (value) {return this.htmlifyNumber(value)}`|`Function`|

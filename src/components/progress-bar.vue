@@ -48,6 +48,7 @@
         type: this.type,
         radius: this.options.radius,
         circleWidth: this.options.circleWidth,
+        circleWidthArray: this.options.circleWidthArray,
         circleLineCap: this.options.circleLineCap,
         maxValue: this.options.maxValue,
         value: this.value,
