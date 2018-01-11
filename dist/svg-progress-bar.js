@@ -591,6 +591,11 @@ exports.default = {
       return this.vueProgress.getValue();
     }
   },
+  watch: {
+    value: function value(val1, val2) {
+      this.update(val1, Math.abs(val1 - val2) * 12);
+    }
+  },
   mounted: function mounted() {
     this.vueProgress = _vueProgress2.default.create({
       dom: this.$refs.progress,
@@ -754,7 +759,7 @@ vueProgress.prototype = {
     var path = void 0,
         now = +new Date();
     if (this._gradientColor && open) {
-      this._svg.innerHTML += '<defs><linearGradient id="' + now + '" spreadMethod="pad">\n                   <stop offset="0%" stop-color="' + this._gradientColor[0] + '" stop-opacity="' + this._gradientOpacity[0] + '"></stop>\n                    <stop offset="100%" stop-color="' + this._gradientColor[1] + '" stop-opacity="' + this._gradientOpacity[1] + '"></stop>\n                       </linearGradient></defs>';
+      this._svg.innerHTML += '<defs><linearGradient id="' + now + '" spreadMethod="pad" x1="0%" y1="0%" x2="100%" y2="0%">\n                   <stop offset="0%" stop-color="' + this._gradientColor[0] + '" stop-opacity="' + this._gradientOpacity[0] + '"></stop>\n                    <stop offset="100%" stop-color="' + this._gradientColor[1] + '" stop-opacity="' + this._gradientOpacity[1] + '"></stop>\n                       </linearGradient></defs>';
     }
     if (this._type === 'circle') {
       path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
@@ -784,14 +789,14 @@ vueProgress.prototype = {
   _calculatePath: function _calculatePath(percentage, open) {
     var end = this._start + percentage / 100 * this._circ,
         endPrecise = this._precise(end);
-    return this._arc(endPrecise, open);
+    return this._arc(endPrecise, open, percentage);
   },
 
-  _arc: function _arc(end, open) {
+  _arc: function _arc(end, open, percentage) {
     var endAdjusted = end - 0.001,
         longArc = end - this._startPrecise < Math.PI ? 0 : 1;
 
-    return ['M', this._radius + this._radiusAdjusted * Math.cos(this._startPrecise), this._radius + this._radiusAdjusted * Math.sin(this._startPrecise), 'A', this._radiusAdjusted, this._radiusAdjusted, 0, longArc, 1, this._radius + this._radiusAdjusted * Math.cos(endAdjusted), this._radius + this._radiusAdjusted * Math.sin(endAdjusted), open ? '' : 'Z'].join(' ');
+    return ['M', this._radius + this._radiusAdjusted * Math.cos(this._startPrecise), this._radius + this._radiusAdjusted * Math.sin(this._startPrecise), 'A', this._radiusAdjusted, this._radiusAdjusted, 0, longArc, 1, this._radius + this._radiusAdjusted * Math.cos(endAdjusted), this._radius + this._radiusAdjusted * Math.sin(endAdjusted), open && percentage < 100 ? '' : 'Z'].join(' ');
   },
 
   _precise: function _precise(value) {

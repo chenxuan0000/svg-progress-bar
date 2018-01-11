@@ -37,6 +37,11 @@
         return this.vueProgress.getValue()
       }
     },
+    watch: {
+      value (val1, val2) {
+        this.update(val1, Math.abs(val1 - val2) * 12)
+      }
+    },
     mounted () {
       this.vueProgress = vueProgress.create({
         dom: this.$refs.progress,

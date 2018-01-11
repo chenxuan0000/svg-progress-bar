@@ -135,7 +135,7 @@ vueProgress.prototype = {
       now = +new Date();
     if (this._gradientColor && open) {
       // 有渐变色
-      this._svg.innerHTML += `<defs><linearGradient id="${now}" spreadMethod="pad">
+      this._svg.innerHTML += `<defs><linearGradient id="${now}" spreadMethod="pad" x1="0%" y1="0%" x2="100%" y2="0%">
                    <stop offset="0%" stop-color="${this._gradientColor[0]}" stop-opacity="${this._gradientOpacity[0]}"></stop>
                     <stop offset="100%" stop-color="${this._gradientColor[1]}" stop-opacity="${this._gradientOpacity[1]}"></stop>
                        </linearGradient></defs>`
@@ -168,10 +168,10 @@ vueProgress.prototype = {
   _calculatePath: function (percentage, open) {
     let end = this._start + ((percentage / 100) * this._circ),
       endPrecise = this._precise(end)
-    return this._arc(endPrecise, open)
+    return this._arc(endPrecise, open, percentage)
   },
 
-  _arc: function (end, open) {
+  _arc: function (end, open, percentage) {
     let endAdjusted = end - 0.001,
       longArc = end - this._startPrecise < Math.PI ? 0 : 1
 
@@ -187,7 +187,7 @@ vueProgress.prototype = {
       1, // clockwise
       this._radius + this._radiusAdjusted * Math.cos(endAdjusted),
       this._radius + this._radiusAdjusted * Math.sin(endAdjusted),
-      open ? '' : 'Z' // close
+      (open && percentage < 100) ? '' : 'Z' // close
     ].join(' ')
   },
 

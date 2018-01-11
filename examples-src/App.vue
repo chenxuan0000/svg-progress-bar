@@ -53,10 +53,10 @@
                         </div>
                     </div>
                     <div :class="box_cls" :style="box_style">
-                        <div :class="label_cls">Custom gradientColor (['rgb(33, 150, 243)','rgb(255, 0, 0)'])</div>
+                        <div :class="label_cls">Custom gradientColor (['rgb(219, 60, 36)','rgb(243, 182, 109)'])</div>
                         <div class="tc">
-                            <progress-bar value="65.55"
-                                          :options="{gradientColor: ['rgb(33, 150, 243)','rgb(255, 0, 0)']}"></progress-bar>
+                            <progress-bar value="100"
+                                          :options="{radius:189,gradientColor: ['rgb(219, 60, 36)','rgb(243, 182, 109)']}"></progress-bar>
                         </div>
                     </div>
                     <div :class="box_cls" :style="box_style">
@@ -85,10 +85,14 @@
                             Custom rect width gradientColor (gradientColor:['rgb(33, 150, 243)','rgb(0, 0, 0)'])
                         </div>
                         <div class="tc">
-                            <progress-bar value="65" type="rect"
+                            <progress-bar value="16" type="rect"
                                           :options="{gradientColor: ['rgb(33, 150, 243)','rgb(0, 0, 0)']}"></progress-bar>
                         </div>
                     </div>
+                    <i-circle :percent="20" size="390" stroke-width="8" trail-color="#e4e5e7" class="gauge">
+                        <p class="title">活动期间当前投资总额</p>
+                        <p class="money" v-text="111"></p>
+                    </i-circle>
                 </div>
 
             </div>
@@ -98,6 +102,7 @@
 
 <script>
   import progressBar from 'src/components/progress-bar.vue'
+  import iCircle from './iCircle'
 
   export default {
     name: 'app',
@@ -142,7 +147,6 @@
       options1 () {
         return {
           radius: 80,
-          value: 60.29,
           text: function (value) {
             return this.htmlifyNumber(value) + '<span style="font-size: 0.4em;">%</span>';
           },
@@ -151,7 +155,8 @@
       }
     },
     components: {
-      progressBar
+      progressBar,
+      iCircle
     }
   }
 </script>
