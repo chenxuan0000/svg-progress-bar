@@ -762,7 +762,7 @@ vueProgress.prototype = {
   _generatePath: function _generatePath(percentage, open, color, pathClass) {
     var path = void 0,
         now = +new Date();
-    if (this._gradientColor && open) {
+    if (this._gradientColor && open && this._type === 'rect') {
       var defs = document.createElementNS(this._NS_SVG, 'defs');
       var linearGradient = document.createElementNS(this._NS_SVG, 'linearGradient');
       linearGradient.id = now;
@@ -783,7 +783,7 @@ vueProgress.prototype = {
       path = document.createElementNS(this._NS_SVG, 'path');
       this._setCss(path, {
         'fill': 'transparent',
-        'stroke': this._gradientColor && open ? 'url(#' + now + ')' : color,
+        'stroke': color,
         'stroke-width': this._strokeWidthArray ? open ? this._strokeWidthArray[1] : this._strokeWidthArray[0] : this._strokeWidth
       });
       path.setAttribute('d', this._calculatePath(percentage, open));
