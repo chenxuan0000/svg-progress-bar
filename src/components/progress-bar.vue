@@ -25,6 +25,12 @@
       },
       type: {
         type: String
+      },
+      valAddCalBack: {
+        type: Array,
+        default: () => {
+          return []
+        }
       }
     },
     computed: {},
@@ -46,12 +52,12 @@
       this.vueProgress = vueProgress.create({
         dom: this.$refs.progress,
         type: this.type,
+        value: this.value,
         radius: this.options.radius,
         circleWidth: this.options.circleWidth,
         circleWidthArray: this.options.circleWidthArray,
         circleLineCap: this.options.circleLineCap,
         maxValue: this.options.maxValue,
-        value: this.value,
         text: this.options.text,
         textColor: this.options.textColor,
         pathColors: this.options.pathColors,
@@ -60,7 +66,8 @@
         duration: this.options.duration,
         rectWidth: this.options.rectWidth,
         rectHeight: this.options.rectHeight,
-        rectRadius: this.options.rectRadius
+        rectRadius: this.options.rectRadius,
+        valAddCalBack: this.valAddCalBack
       });
     }
   }

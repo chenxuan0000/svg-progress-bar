@@ -16,6 +16,7 @@ let requestAnimFrame = window.requestAnimationFrame ||
     this._radius = options.radius || 50 //circle的半径
     this._duration = options.duration === undefined ? 500 : options.duration //动画时间
     this._maxValue = options.maxValue || 100 //最大值
+    this._valAddCalBack = options.valAddCalBack
     this._text = options.text === undefined ? function (value) {
       return this.htmlifyNumber(value)
     } : options.text   // 文字格式
@@ -141,14 +142,14 @@ vueProgress.prototype = {
       let defs = document.createElementNS(this._NS_SVG, 'defs')
       let linearGradient = document.createElementNS(this._NS_SVG, 'linearGradient')
       linearGradient.id = now
-      let stop1 =  document.createElementNS(this._NS_SVG, 'stop')
-      stop1.setAttribute('offset','0%')
-      stop1.setAttribute('stop-color',this._gradientColor[0])
-      stop1.setAttribute('stop-opacity',this._gradientOpacity[0])
-      let stop2 =  document.createElementNS(this._NS_SVG, 'stop')
-      stop2.setAttribute('offset','100%')
-      stop2.setAttribute('stop-color',this._gradientColor[1])
-      stop2.setAttribute('stop-opacity',this._gradientOpacity[1])
+      let stop1 = document.createElementNS(this._NS_SVG, 'stop')
+      stop1.setAttribute('offset', '0%')
+      stop1.setAttribute('stop-color', this._gradientColor[0])
+      stop1.setAttribute('stop-opacity', this._gradientOpacity[0])
+      let stop2 = document.createElementNS(this._NS_SVG, 'stop')
+      stop2.setAttribute('offset', '100%')
+      stop2.setAttribute('stop-color', this._gradientColor[1])
+      stop2.setAttribute('stop-opacity', this._gradientOpacity[1])
       linearGradient.appendChild(stop1)
       linearGradient.appendChild(stop2)
       defs.appendChild(linearGradient)
@@ -234,39 +235,34 @@ vueProgress.prototype = {
     return this._value
   },
 
-  update: function (value, duration) {
-    if (value === true) {
-      this._setPercentage(this.getPercent())
-      return this
-    }
-
+  update: function (value, duration = this._duration) {
     if (this._value == value || isNaN(value)) return this
-    if (duration === undefined) duration = this._duration
 
     let self = this,
-      oldPercentage = self.getPercent(),
+      oldPercentage = self.getPercent(), // 初始化百分比
       delta = 1,
       newPercentage, isGreater, steps, stepDuration;
 
     this._value = Math.min(this._maxValue, Math.max(0, value))
 
-    if (!duration) {
-      this._setPercentage(this.getPercent())
-      return this
-    }
-
-    newPercentage = self.getPercent()
+    newPercentage = self.getPercent() // 传入终值百分比
     isGreater = newPercentage > oldPercentage
     delta += newPercentage % 1
     steps = Math.floor(Math.abs(newPercentage - oldPercentage) / delta)
     stepDuration = duration / steps;
-
-
     (function animate (lastFrame) {
       if (isGreater) {
         oldPercentage += delta
       } else {
         oldPercentage -= delta
+      }
+      // 执行this._valAddCalBack的回调
+      if (self._valAddCalBack.length > 0) {
+        self._valAddCalBack.forEach(item => {
+          if (item.value === oldPercentage) {
+            item.func()
+          }
+        })
       }
       if ((isGreater && oldPercentage >= newPercentage) || (!isGreater && oldPercentage <= newPercentage)) {
         requestAnimFrame(function () {
@@ -279,7 +275,7 @@ vueProgress.prototype = {
         self._setPercentage(oldPercentage)
       })
 
-      var now = Date.now(),
+      let now = Date.now(),
         deltaTime = now - lastFrame;
 
       if (deltaTime >= stepDuration) {

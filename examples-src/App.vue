@@ -38,6 +38,23 @@
                         <h2 class="ma0 pb2 f2 fw4 lh-1">Custom options</h2>
                         <p class="ma0 lh-copy f6">vue-progress-bar can also have any arbitrary options .</p>
                     </a>
+                    <!--valAddCalBack of svg bar-->
+                    <div :class="box_cls" :style="box_style">
+                        <div :class="label_cls">Custom <span
+                                class="normal"> valAddCalBack of svg bar (带值变化回调的svg bar)</span>
+                        </div>
+                        <div class="tc" style="position: relative;">
+                            <div class="dot-test">
+                                <span class="one" :class="{active: dotValArr.per20}"><span class="text" v-text="dotValArr.per20"></span></span>
+                                <span class="two" :class="{active: dotValArr.per40}"><span class="text" v-text="dotValArr.per40"></span></span>
+                                <span class="three" :class="{active: dotValArr.per60}"><span class="text" v-text="dotValArr.per60"></span></span>
+                                <span class="four" :class="{active: dotValArr.per80}"><span class="text" v-text="dotValArr.per80"></span></span>
+                            </div>
+                            <progress-bar value="90" type="rect" :valAddCalBack="valAddCalBack1"
+                                          :options="{rectWidth:800,rectHeight:10,duration: 1800,text: '',pathColors: ['#bbb','yellow']}"></progress-bar>
+                        </div>
+                    </div>
+                    <!--自定义路径颜色-->
                     <div :class="box_cls" :style="box_style">
                         <div :class="label_cls">Custom <span class="normal">color(自定义路径颜色) (['#999','rgb(33, 150, 243)'])</span>
                         </div>
@@ -46,21 +63,26 @@
                                           :options="{pathColors: ['#999','rgb(33, 150, 243)']}"></progress-bar>
                         </div>
                     </div>
+                    <!--自定义闭合为圆角-->
                     <div :class="box_cls" :style="box_style">
-                        <div :class="label_cls">Custom <span class="normal">circleLinecap(自定义闭合为圆角) ('round')</span></div>
+                        <div :class="label_cls">Custom <span class="normal">circleLinecap(自定义闭合为圆角) ('round')</span>
+                        </div>
                         <div class="tc">
                             <progress-bar value="65.55"
                                           :options="{circleLineCap: 'round'}"></progress-bar>
                         </div>
                     </div>
+                    <!--自定义为扇形-->
                     <div :class="box_cls" :style="box_style">
-                        <div :class="label_cls">Custom <span class="normal"> fan of svg circleWidth === radius(自定义为扇形) )</span>
+                        <div :class="label_cls">Custom <span
+                                class="normal"> fan of svg circleWidth === radius(自定义为扇形)</span>
                         </div>
                         <div class="tc">
                             <progress-bar value="100"
                                           :options="{radius:130,circleWidth:130,duration: 3000,pathColors: ['#bbb','rgb(33, 150, 243)']}"></progress-bar>
                         </div>
                     </div>
+                    <!--自定义两条路径宽度-->
                     <div :class="box_cls" :style="box_style">
                         <div :class="label_cls">Custom Wide ranging <span
                                 class="normal"> circleWidthArray (自定义两条路径宽度) ([10,20])</span></div>
@@ -69,6 +91,7 @@
                                           :options="{radius:189,circleLineCap: 'round',circleWidthArray: [10,20]}"></progress-bar>
                         </div>
                     </div>
+                    <!--自定义两条路径宽度-->
                     <div :class="box_cls" :style="box_style">
                         <div :class="label_cls">Custom Wide ranging <span
                                 class="normal"> circleWidthArray (自定义两条路径宽度) ([30,15])</span></div>
@@ -77,6 +100,7 @@
                                           :options="{radius:189,circleLineCap: 'round',circleWidthArray: [30,15]}"></progress-bar>
                         </div>
                     </div>
+                    <!--自定义文本格式-->
                     <div :class="box_cls" :style="box_style">
                         <div :class="label_cls">Custom <span class="normal">text (自定义文本格式) (text: func , textColor: 'rgb(33, 150, 243)')</span>
                         </div>
@@ -84,12 +108,18 @@
                             <progress-bar value="65.55" :options="options1"></progress-bar>
                         </div>
                     </div>
+                    <!--自定义动画执行时间-->
                     <div :class="box_cls" :style="box_style">
-                        <div :class="label_cls">Custom duration (自定义动画执行时间) <span class="normal">(duration: 150)</span></div>
+                        <div :class="label_cls">Custom duration (自定义动画执行时间) <span class="normal">(duration: 150)(duration: 0)</span>
+                        </div>
                         <div class="tc">
                             <progress-bar value="65.55" :options="{duration:150}"></progress-bar>
                         </div>
+                        <div class="tc">
+                            <progress-bar :value="61" :options="{duration:0}"></progress-bar>
+                        </div>
                     </div>
+                    <!--自定义rect的大小和圆角弧度-->
                     <div :class="box_cls" :style="box_style">
                         <div :class="label_cls">
                             Custom rect <span class="normal">width height rectRadius (自定义rect的大小和圆角弧度) (rectWidth: 380,rectHeight: 28,rectRadius:14)</span>
@@ -99,6 +129,7 @@
                                           :options="{rectWidth:380,rectHeight:28,rectRadius:14}"></progress-bar>
                         </div>
                     </div>
+                    <!--自定义rect的渐变色-->
                     <div :class="box_cls" :style="box_style">
                         <div :class="label_cls">
                             Custom rect <span class="normal">width gradientColor (自定义rect的渐变色) (gradientColor:['rgb(33, 150, 243)','rgb(0, 0, 0)'])</span>
@@ -108,6 +139,7 @@
                                           :options="{gradientColor: ['rgb(33, 150, 243)','rgb(0, 0, 0)']}"></progress-bar>
                         </div>
                     </div>
+                    <!--无文本-->
                     <div :class="box_cls" :style="box_style">
                         <div :class="label_cls">
                             Custom rect <span class="normal">no text (无文本)(text:func)</span>
@@ -129,14 +161,16 @@
   export default {
     name: 'app',
     data () {
-      return {}
-    },
-    methods: {
-      update () {
-        let now = this.$refs.uuu.getVal();
-        this.$refs.uuu.update(now + 5, 20)
+      return {
+        dotValArr: {
+          per20: '',
+          per40: '',
+          per60: '',
+          per80: ''
+        }
       }
     },
+    methods: {},
     computed: {
       header_cls () {
         return 'db mt5 pb3 dark-gray hover-blue lh-1 no-underline'
@@ -152,6 +186,34 @@
       },
       cell_cls () {
         return 'ph1 pv1 ba b--moon-gray'
+      },
+      valAddCalBack1 () {
+        return [
+          {
+            value: 20,
+            func: () => {
+              this.dotValArr.per20 = 20
+            }
+          },
+          {
+            value: 40,
+            func: () => {
+              this.dotValArr.per40 = 40
+            }
+          },
+          {
+            value: 60,
+            func: () => {
+              this.dotValArr.per60 = 60
+            }
+          },
+          {
+            value: 80,
+            func: () => {
+              this.dotValArr.per80 = 80
+            }
+          }
+        ]
       },
       options1 () {
         return {
@@ -170,6 +232,46 @@
 </script>
 
 <style lang="scss">
+    .dot-test {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 800px;
+        z-index: 99;
+        > span {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            top: 5px;
+            border: 4px solid #e80707;
+            transform: translate(-50%,-18%);
+            border-radius: 50%;
+            &.active {
+                width: 14px;
+                height: 14px;
+                border-width: 6px;
+            }
+            .text {
+                position: absolute;
+                left: -9px;
+                width: 30px;
+                top: -30px;
+            }
+            &.one {
+                left: 20%;
+            }
+            &.two {
+                left: 40%;
+            }
+            &.three {
+                left: 60%;
+            }
+            &.four {
+                left: 80%;
+            }
+        }
+    }
+
     #app {
         padding-bottom: 100px;
     }

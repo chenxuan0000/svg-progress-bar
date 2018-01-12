@@ -579,6 +579,12 @@ exports.default = {
     },
     type: {
       type: String
+    },
+    valAddCalBack: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
     }
   },
   computed: {},
@@ -600,12 +606,12 @@ exports.default = {
     this.vueProgress = _vueProgress2.default.create({
       dom: this.$refs.progress,
       type: this.type,
+      value: this.value,
       radius: this.options.radius,
       circleWidth: this.options.circleWidth,
       circleWidthArray: this.options.circleWidthArray,
       circleLineCap: this.options.circleLineCap,
       maxValue: this.options.maxValue,
-      value: this.value,
       text: this.options.text,
       textColor: this.options.textColor,
       pathColors: this.options.pathColors,
@@ -614,7 +620,8 @@ exports.default = {
       duration: this.options.duration,
       rectWidth: this.options.rectWidth,
       rectHeight: this.options.rectHeight,
-      rectRadius: this.options.rectRadius
+      rectRadius: this.options.rectRadius,
+      valAddCalBack: this.valAddCalBack
     });
   }
 };
@@ -642,6 +649,7 @@ var requestAnimFrame = window.requestAnimationFrame || window.webkitRequestAnima
   this._radius = options.radius || 50;
   this._duration = options.duration === undefined ? 500 : options.duration;
   this._maxValue = options.maxValue || 100;
+  this._valAddCalBack = options.valAddCalBack;
   this._text = options.text === undefined ? function (value) {
     return this.htmlifyNumber(value);
   } : options.text;
@@ -846,14 +854,10 @@ vueProgress.prototype = {
     return this._value;
   },
 
-  update: function update(value, duration) {
-    if (value === true) {
-      this._setPercentage(this.getPercent());
-      return this;
-    }
+  update: function update(value) {
+    var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this._duration;
 
     if (this._value == value || isNaN(value)) return this;
-    if (duration === undefined) duration = this._duration;
 
     var self = this,
         oldPercentage = self.getPercent(),
@@ -865,22 +869,24 @@ vueProgress.prototype = {
 
     this._value = Math.min(this._maxValue, Math.max(0, value));
 
-    if (!duration) {
-      this._setPercentage(this.getPercent());
-      return this;
-    }
-
     newPercentage = self.getPercent();
     isGreater = newPercentage > oldPercentage;
     delta += newPercentage % 1;
     steps = Math.floor(Math.abs(newPercentage - oldPercentage) / delta);
     stepDuration = duration / steps;
-
     (function animate(lastFrame) {
       if (isGreater) {
         oldPercentage += delta;
       } else {
         oldPercentage -= delta;
+      }
+
+      if (self._valAddCalBack.length > 0) {
+        self._valAddCalBack.forEach(function (item) {
+          if (item.value === oldPercentage) {
+            item.func();
+          }
+        });
       }
       if (isGreater && oldPercentage >= newPercentage || !isGreater && oldPercentage <= newPercentage) {
         requestAnimFrame(function () {

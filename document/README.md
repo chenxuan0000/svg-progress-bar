@@ -72,23 +72,27 @@ new Vue({
 ```
 
 ## 配置参数
-|key|description|defualt|options|
+|key|description|default|val|
 |:---|---|---|---|
-| `type`|进度条类型|`'circle'`|`'circle'` `'rect'`|
-|`radius`|环形进度条半径|`50`|`Number`|
-|`circleWidth`|环形进度条线宽|`10`|`Number`|
-|`circleWidthArray`|如果你想要不等宽的环形条可以设置环形进度条线宽度组|`null`|`Array`|
-|`circleLinecap`|环形进度条的边角形状|`''`|`'round',''`|
-|`maxValue`|进度条的最大值|`100`|`Number`|
-|`text`|进度条的文本格式|`function (value) {return this.htmlifyNumber(value)}`|`Function`|
-|`textColor`|进度条的文本颜色|`#000`|`color`|
-|`pathColors`|进度条填充的颜色队列|`['#EEE', '#F00']`|`Array`|
-|`gradientColor`|进度条填充的渐变色|`null`|`Array`|
-|`gradientOpacity`|进度条填充的渐变色透明度|`[1,1]`|`Array`|
-|`duration`|进度条的动画时间|`500`|`Number`|
-|`rectWidth`|矩形进度条的宽度|`400`|`Number`|
-|`rectHeight`|矩形进度条的高度|`40`|`Number`|
-|`rectRadius`|矩形进度条的圆角度|`0`|`Number`|
+|`type`|进度条类型|`'circle'`|`'circle'` `'rect'`|
+|`value`|进度条的初始值|`0`|`Number` `String`|
+|`options`|进度条的options对象参数|`{}`|`Object`|
+|`options.radius`|环形进度条半径|`50`|`Number`|
+|`options.circleWidth`|环形进度条线宽|`10`|`Number`|
+|`options.circleWidthArray`|如果你想要不等宽的环形条可以设置环形进度条线宽度组|`null`|`Array`|
+|`options.circleLinecap`|环形进度条的边角形状|`''`|`'round',''`|
+|`options.maxValue`|进度条的最大值|`100`|`Number`|
+|`options.text`|进度条的文本格式|`function (value) {return this.htmlifyNumber(value)}`|`Function`|
+|`options.textColor`|进度条的文本颜色|`#000`|`color`|
+|`options.pathColors`|进度条填充的颜色队列|`['#EEE', '#F00']`|`Array`|
+|`options.gradientColor`|进度条填充的渐变色|`null`|`Array`|
+|`options.gradientOpacity`|进度条填充的渐变色透明度|`[1,1]`|`Array`|
+|`options.duration`|进度条的动画时间|`500`|`Number`|
+|`options.rectWidth`|矩形进度条的宽度|`400`|`Number`|
+|`options.rectHeight`|矩形进度条的高度|`40`|`Number`|
+|`options.rectRadius`|矩形进度条的圆角度|`0`|`Number`|
+|`options.valAddCalBack`|进度条value变化对应节点的回调事件|`[]`|`[{value: 20,func: () => {this.dotValArr.per20 = 20}},{value: 40,func: () => {this.dotValArr.per40 = 40}}]`|
+
 
 
 ## License

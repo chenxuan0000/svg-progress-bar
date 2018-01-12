@@ -72,24 +72,27 @@ Example:
 </html>
 ```
 
-## Configure options
-|key|description|defualt|options|
+## Configure list
+|key|description|default|val|
 |:---|---|---|---|
-| `type`|type of the progress bar|`'circle'`|`'circle'` `'rect'`|
-|`radius`|radius of the circle progress bar|`50`|`Number`|
-|`circleWidth`|stokeWidth of the circle progress bar|`10`|`Number`|
-|`circleWidthArray`|circleWidthArray of the circle progress bar if you want wide ranging|`null`|`Array`|
-|`circleLinecap`|circleLinecap of the circle progress bar|`''`|`'round',''`|
-|`maxValue`|maxValue of the progress bar|`100`|`Number`|
-|`text`|text of the progress bar|`function (value) {return this.htmlifyNumber(value)}`|`Function`|
-|`textColor`|text color of the progress bar|`#000`|`color`|
-|`pathColors`|pathColors of the progress bar|`['#EEE', '#F00']`|`Array`|
-|`gradientColor`|gradientColor of the progress bar|`null`|`Array`|
-|`gradientOpacity`|gradientOpacity of the progress bar|`[1,1]`|`Array`|
-|`duration`|duration of the progress bar|`500`|`Number`|
-|`rectWidth`|rectWidth of the rect progress bar|`400`|`Number`|
-|`rectHeight`|rectHeight of the rect progress bar|`40`|`Number`|
-|`rectRadius`|rectRadius of the rect progress bar|`0`|`Number`|
+|`type`|type of the progress bar|`'circle'`|`'circle'` `'rect'`|
+|`value`|value of the progress bar|`0`|`Number` `String`|
+|`options`|options of the progress bar|`{}`|`Object`|
+|`options.radius`|radius of the circle progress bar|`50`|`Number`|
+|`options.circleWidth`|stokeWidth of the circle progress bar|`10`|`Number`|
+|`options.circleWidthArray`|circleWidthArray of the circle progress bar if you want wide ranging|`null`|`Array`|
+|`options.circleLinecap`|circleLinecap of the circle progress bar|`''`|`'round',''`|
+|`options.maxValue`|maxValue of the progress bar|`100`|`Number`|
+|`options.text`|text of the progress bar|`function (value) {return this.htmlifyNumber(value)}`|`Function`|
+|`options.textColor`|text color of the progress bar|`#000`|`color`|
+|`options.pathColors`|pathColors of the progress bar|`['#EEE', '#F00']`|`Array`|
+|`options.gradientColor`|gradientColor of the progress bar|`null`|`Array`|
+|`options.gradientOpacity`|gradientOpacity of the progress bar|`[1,1]`|`Array`|
+|`options.duration`|duration of the progress bar|`500`|`Number`|
+|`options.rectWidth`|rectWidth of the rect progress bar|`400`|`Number`|
+|`options.rectHeight`|rectHeight of the rect progress bar|`40`|`Number`|
+|`options.rectRadius`|rectRadius of the rect progress bar|`0`|`Number`|
+|`options.valAddCalBack`|valAddCalBack of the progress bar|`[]`|`[{value: 20,func: () => {this.dotValArr.per20 = 20}},{value: 40,func: () => {this.dotValArr.per40 = 40}}]`|
 
 
 ## License
