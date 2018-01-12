@@ -6,12 +6,12 @@
     </head>
     <body>
         <div id="app">
-            <vue-progress-bar :options="options"></vue-progress-bar>
-            <vue-progress-bar :options="options1"></vue-progress-bar>
+            <svg-progress-bar type='rect' value="60.29" :options="options"></svg-progress-bar>
+            <svg-progress-bar value="60.29" :options="options1"></svg-progress-bar>
         </div>
     </body>
     <script src="https://cdn.bootcss.com/vue/2.5.9/vue.js"></script>
-    <script src="../dist/vue-progress-bar.min.js"></script>
+    <script src="../dist/svg-progress-bar.js"></script>
     <script>
       new Vue({
         el: '#app',
@@ -20,11 +20,9 @@
           options () {
             return {
               radius: 80,
-              value: 60.29,
               text: function (value) {
                 return this.htmlifyNumber(value) + '<span style="font-size: 0.4em;">%</span>';
               },
-              type: 'rect',
               rectWidth: 600,
               rectHeight: 50,
               rectRadius: 25,
@@ -33,7 +31,6 @@
           options1 () {
             return {
               radius: 80,
-              value: 60.29,
               text: function (value) {
                 return this.htmlifyNumber(value) + '<span style="font-size: 0.4em;">%</span>';
               },
