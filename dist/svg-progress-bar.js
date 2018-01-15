@@ -861,7 +861,7 @@ vueProgress.prototype = {
 
     var self = this,
         oldPercentage = self.getPercent(),
-        delta = 1,
+        delta = 0.3,
         newPercentage = void 0,
         isGreater = void 0,
         steps = void 0,
@@ -883,7 +883,7 @@ vueProgress.prototype = {
 
       if (self._valAddCalBack.length > 0) {
         self._valAddCalBack.forEach(function (item) {
-          if (item.value === oldPercentage) {
+          if (item.value - oldPercentage > 0 && item.value - oldPercentage < delta) {
             item.func();
           }
         });
