@@ -607,9 +607,10 @@ exports.default = {
       dom: this.$refs.progress,
       type: this.type,
       value: this.value,
+      valRate: this.options.valRate,
       radius: this.options.radius,
       circleWidth: this.options.circleWidth,
-      circleWidthArray: this.options.circleWidthArray,
+      varyStrokeArray: this.options.varyStrokeArray,
       circleLineCap: this.options.circleLineCap,
       maxValue: this.options.maxValue,
       text: this.options.text,
@@ -643,6 +644,7 @@ var requestAnimFrame = window.requestAnimationFrame || window.webkitRequestAnima
   var endAngleRad = Math.PI / 180 * 270;
   this._el = options.dom;
   this._type = options.type || 'circle';
+  this._valRate = options.valRate || 1;
   this._rectWidth = options.rectWidth || 200;
   this._rectHeight = options.rectHeight || 20;
   this._rectRadius = options.rectRadius || 0;
@@ -654,7 +656,7 @@ var requestAnimFrame = window.requestAnimationFrame || window.webkitRequestAnima
     return this.htmlifyNumber(value);
   } : options.text;
   this._strokeWidth = options.circleWidth || 10;
-  this._strokeWidthArray = options.circleWidthArray;
+  this._strokeWidthArray = options.varyStrokeArray;
   this._circleLineCap = options.circleLineCap;
   this._colors = options.pathColors || ['#EEE', '#F00'];
   this._gradientColor = options.gradientColor;
@@ -757,13 +759,14 @@ vueProgress.prototype = {
     if (this._type === 'circle') {
       this._svgWidth = this._svgHeight = this._svgSize;
       this._movingPath = this._svg.getElementsByTagName('path')[1];
+      this._svg.setAttribute('height', this._svgHeight);
     } else if (this._type === 'rect') {
       this._svgWidth = this._rectWidth;
       this._svgSize = this._svgHeight = this._rectHeight;
       this._movingPath = this._svg.getElementsByTagName('rect')[1];
+      this._svg.setAttribute('height', this._strokeWidthArray ? Math.max(this._strokeWidthArray[0], this._strokeWidthArray[1]) : this._svgHeight);
     }
     this._svg.setAttribute('width', this._svgWidth);
-    this._svg.setAttribute('height', this._svgHeight);
     return this;
   },
 
@@ -804,8 +807,16 @@ vueProgress.prototype = {
       };
       path.setAttribute('rx', this._rectRadius);
       path.setAttribute('ry', this._rectRadius);
+      if (this._strokeWidthArray) {
+        var delated = (this._strokeWidthArray[1] - this._strokeWidthArray[0]) / 2;
+        if (delated > 0) {
+          !open && path.setAttribute('y', delated);
+        } else {
+          open && path.setAttribute('y', -delated);
+        }
+      }
       path.setAttribute('width', this._rectWidth * percentage / 100);
-      path.setAttribute('height', this._rectHeight);
+      path.setAttribute('height', this._strokeWidthArray ? open ? this._strokeWidthArray[1] : this._strokeWidthArray[0] : this._rectHeight);
       this._setCss(path, rectStyle);
     }
     this._svg.appendChild(path);
@@ -861,7 +872,7 @@ vueProgress.prototype = {
 
     var self = this,
         oldPercentage = self.getPercent(),
-        delta = 0.3,
+        delta = this._valRate,
         newPercentage = void 0,
         isGreater = void 0,
         steps = void 0,

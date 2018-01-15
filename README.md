@@ -77,11 +77,12 @@ Example:
 |:---|---|---|---|
 |`type`|type of the progress bar|`'circle'`|`'circle'` `'rect'`|
 |`value`|value of the progress bar|`0`|`Number` `String`|
-|`options`|options of the progress bar|`{}`|`Object`|
 |`valAddCalBack`|valAddCalBack of the progress bar|`[]`|`[{value: 20,func: () => {this.dotValArr.per20 = 20}},{value: 40,func: () => {this.dotValArr.per40 = 40}}]`|
+|`options`|options of the progress bar|`{}`|`Object`|
+|`options.valRate`|value add Rate of the circle progress bar|`1`|`Number`|
 |`options.radius`|radius of the circle progress bar|`50`|`Number`|
 |`options.circleWidth`|stokeWidth of the circle progress bar|`10`|`Number`|
-|`options.circleWidthArray`|circleWidthArray of the circle progress bar if you want wide ranging|`null`|`Array`|
+|`options.varyStrokeArray`|varyStrokeArray of the circle progress bar if you want wide ranging|`null`|`Array`|
 |`options.circleLinecap`|circleLinecap of the circle progress bar|`''`|`'round',''`|
 |`options.maxValue`|maxValue of the progress bar|`100`|`Number`|
 |`options.text`|text of the progress bar|`function (value) {return this.htmlifyNumber(value)}`|`Function`|

@@ -9,23 +9,24 @@ let requestAnimFrame = window.requestAnimationFrame ||
   vueProgress = function (options) {
     let endAngleRad = Math.PI / 180 * 270
     this._el = options.dom  //绑定的dom节点
-    this._type = options.type || 'circle' //svg进度条类型（circle/rect）
-    this._rectWidth = options.rectWidth || 200 //rect的宽度
-    this._rectHeight = options.rectHeight || 20 //rect的高度
-    this._rectRadius = options.rectRadius || 0  //rect的圆角半径
+    this._type = options.type || 'circle' // svg进度条类型（circle/rect）
+    this._valRate = options.valRate || 1 // 数值增长的幅度
+    this._rectWidth = options.rectWidth || 200 // rect的宽度
+    this._rectHeight = options.rectHeight || 20 // rect的高度
+    this._rectRadius = options.rectRadius || 0  // rect的圆角半径
     this._radius = options.radius || 50 //circle的半径
-    this._duration = options.duration === undefined ? 500 : options.duration //动画时间
-    this._maxValue = options.maxValue || 100 //最大值
+    this._duration = options.duration === undefined ? 500 : options.duration // 动画时间
+    this._maxValue = options.maxValue || 100 // 最大值
     this._valAddCalBack = options.valAddCalBack
     this._text = options.text === undefined ? function (value) {
       return this.htmlifyNumber(value)
     } : options.text   // 文字格式
     this._strokeWidth = options.circleWidth || 10   // 等宽circle的圆环宽度
-    this._strokeWidthArray = options.circleWidthArray  // circle的圆环宽度
+    this._strokeWidthArray = options.varyStrokeArray  // 不等宽的circle的圆环宽度/rect高度
     this._circleLineCap = options.circleLineCap   // circle的strokelinecap属性定义不同类型的开放路径的终结：
-    this._colors = options.pathColors || ['#EEE', '#F00'] //path的fill颜色
-    this._gradientColor = options.gradientColor //第二个rect/path的渐变色
-    this._gradientOpacity = options.gradientOpacity || [1, 1] //第二个rect/path的渐变色的透明度
+    this._colors = options.pathColors || ['#EEE', '#F00'] // path的fill颜色
+    this._gradientColor = options.gradientColor // 第二个rect/path的渐变色
+    this._gradientOpacity = options.gradientOpacity || [1, 1] // 第二个rect/path的渐变色的透明度
     this._textColor = options.textColor || '#000'
     this._value = 0
     this._svg = null
@@ -124,13 +125,14 @@ vueProgress.prototype = {
     if (this._type === 'circle') {
       this._svgWidth = this._svgHeight = this._svgSize
       this._movingPath = this._svg.getElementsByTagName('path')[1]
+      this._svg.setAttribute('height', this._svgHeight)
     } else if (this._type === 'rect') {
       this._svgWidth = this._rectWidth
       this._svgSize = this._svgHeight = this._rectHeight
       this._movingPath = this._svg.getElementsByTagName('rect')[1]
+      this._svg.setAttribute('height', this._strokeWidthArray ? Math.max(this._strokeWidthArray[0], this._strokeWidthArray[1]) : this._svgHeight)
     }
     this._svg.setAttribute('width', this._svgWidth)
-    this._svg.setAttribute('height', this._svgHeight)
     return this
   },
 
@@ -172,8 +174,16 @@ vueProgress.prototype = {
       }
       path.setAttribute('rx', this._rectRadius)
       path.setAttribute('ry', this._rectRadius)
+      if (this._strokeWidthArray) {
+        let delated = (this._strokeWidthArray[1] - this._strokeWidthArray[0]) / 2
+        if (delated > 0) {
+          !open && path.setAttribute('y', delated)
+        } else {
+          open && path.setAttribute('y', -delated)
+        }
+      }
       path.setAttribute('width', this._rectWidth * percentage / 100)
-      path.setAttribute('height', this._rectHeight)
+      path.setAttribute('height', this._strokeWidthArray ? (open ? this._strokeWidthArray[1] : this._strokeWidthArray[0]) : this._rectHeight)
       this._setCss(path, rectStyle)
     }
     this._svg.appendChild(path)
@@ -240,7 +250,7 @@ vueProgress.prototype = {
 
     let self = this,
       oldPercentage = self.getPercent(), // 初始化百分比
-      delta = 0.3,
+      delta = this._valRate,
       newPercentage, isGreater, steps, stepDuration;
 
     this._value = Math.min(this._maxValue, Math.max(0, value))

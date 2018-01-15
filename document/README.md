@@ -76,11 +76,12 @@ new Vue({
 |:---|---|---|---|
 |`type`|进度条类型|`'circle'`|`'circle'` `'rect'`|
 |`value`|进度条的初始值|`0`|`Number` `String`|
-|`options`|进度条的options对象参数|`{}`|`Object`|
 |`valAddCalBack`|进度条value变化对应节点的回调事件|`[]`|`[{value: 20,func: () => {this.dotValArr.per20 = 20}},{value: 40,func: () => {this.dotValArr.per40 = 40}}]`|
+|`options`|进度条的options对象参数|`{}`|`Object`|
 |`options.radius`|环形进度条半径|`50`|`Number`|
+|`options.valRate`|value每次增加的幅度|`1`|`Number`|
 |`options.circleWidth`|环形进度条线宽|`10`|`Number`|
-|`options.circleWidthArray`|如果你想要不等宽的环形条可以设置环形进度条线宽度组|`null`|`Array`|
+|`options.varyStrokeArray`|如果你想要不等宽的环形条或者柱形条可以设置宽度/高度组|`null`|`Array`|
 |`options.circleLinecap`|环形进度条的边角形状|`''`|`'round',''`|
 |`options.maxValue`|进度条的最大值|`100`|`Number`|
 |`options.text`|进度条的文本格式|`function (value) {return this.htmlifyNumber(value)}`|`Function`|
