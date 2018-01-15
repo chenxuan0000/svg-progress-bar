@@ -54,6 +54,22 @@
                                           :options="{rectWidth:800,rectHeight:10,duration: 1800,text: '',pathColors: ['#bbb','yellow']}"></progress-bar>
                         </div>
                     </div>
+                    <!--valAddCalBack of svg bar2-->
+                    <div :class="box_cls" :style="box_style">
+                        <div :class="label_cls">Custom <span
+                                class="normal"> valAddCalBack of svg bar (带小数值变化回调的svg bar)</span>
+                        </div>
+                        <div class="tc" style="position: relative;">
+                            <div class="dot-test">
+                                <span class="one2" :class="{active: dotValArr2.per1}"><span class="text" v-text="dotValArr2.per1"></span></span>
+                                <span class="two2" :class="{active: dotValArr2.per2}"><span class="text" v-text="dotValArr2.per2"></span></span>
+                                <span class="three2" :class="{active: dotValArr2.per3}"><span class="text" v-text="dotValArr2.per3"></span></span>
+                                <span class="four2" :class="{active: dotValArr2.per4}"><span class="text" v-text="dotValArr2.per4"></span></span>
+                            </div>
+                            <progress-bar value="90" type="rect" :valAddCalBack="valAddCalBack2"
+                                          :options="{rectWidth:800,rectHeight:10,duration: 1800,text: '',pathColors: ['#bbb','yellow']}"></progress-bar>
+                        </div>
+                    </div>
                     <!--自定义路径颜色-->
                     <div :class="box_cls" :style="box_style">
                         <div :class="label_cls">Custom <span class="normal">color(自定义路径颜色) (['#999','rgb(33, 150, 243)'])</span>
@@ -167,6 +183,12 @@
           per40: '',
           per60: '',
           per80: ''
+        },
+        dotValArr2: {
+          per1: '',
+          per2: '',
+          per3: '',
+          per4: ''
         }
       }
     },
@@ -211,6 +233,44 @@
             value: 80,
             func: () => {
               this.dotValArr.per80 = 80
+            }
+          }
+        ]
+      },
+      valAddCalBack2 () {
+        return [
+          {
+            value: 16.67,
+            func: () => {
+              this.dotValArr2.per1 = 16.67
+            }
+          },
+          {
+            value: 33.33,
+            func: () => {
+              this.dotValArr2.per2 = 33.33
+            }
+          },
+          {
+            value: 50,
+            func: () => {
+              this.dotValArr2.per3 = 50
+            }
+          },
+          {
+            value: 66.67,
+            func: () => {
+              this.dotValArr2.per4 = 66.67
+            }
+          },
+          {
+            value: 83.33,
+            func: () => {
+            }
+          },
+          {
+            value: 100,
+            func: () => {
             }
           }
         ]
@@ -268,6 +328,18 @@
             }
             &.four {
                 left: 80%;
+            }
+            &.one2 {
+                left: 16.67%;
+            }
+            &.two2 {
+                left: 33.33%;
+            }
+            &.three2 {
+                left: 50%;
+            }
+            &.four2 {
+                left: 66.67%;
             }
         }
     }

@@ -240,7 +240,7 @@ vueProgress.prototype = {
 
     let self = this,
       oldPercentage = self.getPercent(), // 初始化百分比
-      delta = 1,
+      delta = 0.3,
       newPercentage, isGreater, steps, stepDuration;
 
     this._value = Math.min(this._maxValue, Math.max(0, value))
@@ -259,7 +259,7 @@ vueProgress.prototype = {
       // 执行this._valAddCalBack的回调
       if (self._valAddCalBack.length > 0) {
         self._valAddCalBack.forEach(item => {
-          if (item.value === oldPercentage) {
+          if ((item.value - oldPercentage) > 0 && (item.value - oldPercentage) < delta) {
             item.func()
           }
         })
