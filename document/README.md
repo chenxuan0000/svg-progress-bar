@@ -79,7 +79,7 @@ new Vue({
 |`valAddCalBack`|进度条value变化对应节点的回调事件|`[]`|`[{value: 20,func: () => {this.dotValArr.per20 = 20}},{value: 40,func: () => {this.dotValArr.per40 = 40}}]`|
 |`options`|进度条的options对象参数|`{}`|`Object`|
 |`options.radius`|环形进度条半径|`50`|`Number`|
-|`options.valRate`|value每次增加的幅度|`1`|`Number`|
+|`options.valRate`|value每次增加的幅度(建议<=1)|`1`|`Number`|
 |`options.circleWidth`|环形进度条线宽|`10`|`Number`|
 |`options.varyStrokeArray`|如果你想要不等宽的环形条或者柱形条可以设置宽度/高度组|`null`|`Array`|
 |`options.circleLinecap`|环形进度条的边角形状|`''`|`'round',''`|

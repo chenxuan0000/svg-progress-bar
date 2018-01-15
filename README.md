@@ -79,7 +79,7 @@ Example:
 |`value`|value of the progress bar|`0`|`Number` `String`|
 |`valAddCalBack`|valAddCalBack of the progress bar|`[]`|`[{value: 20,func: () => {this.dotValArr.per20 = 20}},{value: 40,func: () => {this.dotValArr.per40 = 40}}]`|
 |`options`|options of the progress bar|`{}`|`Object`|
-|`options.valRate`|value add Rate of the circle progress bar|`1`|`Number`|
+|`options.valRate`|value add Rate of the circle progress bar(suggest <= 1)|`1`|`Number`|
 |`options.radius`|radius of the circle progress bar|`50`|`Number`|
 |`options.circleWidth`|stokeWidth of the circle progress bar|`10`|`Number`|
 |`options.varyStrokeArray`|varyStrokeArray of the circle progress bar if you want wide ranging|`null`|`Array`|

@@ -75,7 +75,7 @@
                                                                                              v-text="dotValArr2.per4"></span></span>
                             </div>
                             <progress-bar value="90" type="rect" :valAddCalBack="valAddCalBack2"
-                                          :options="{rectWidth:800,rectHeight:10,duration: 1800,text: '',pathColors: ['#bbb','yellow']}"></progress-bar>
+                                          :options="{rectWidth:800,rectHeight:10,duration: 1800,text: '',valRate:0.3,pathColors: ['#bbb','yellow']}"></progress-bar>
                         </div>
                     </div>
                     <!--自定义路径颜色-->
