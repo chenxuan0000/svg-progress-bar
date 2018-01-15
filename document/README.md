@@ -7,8 +7,8 @@
     <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2176389216,1520905711&fm=27&gp=0.jpg" width="350"/>
 </p>                                          
 <p align="center">
-    📘 <a href="https://chenxuan0000.github.io/svg-progress-bar/" target="_blank">在线demo</a> |
-    🌾 <a href="../README.md">英文文档</a>
+    🌾 <a href="https://chenxuan0000.github.io/svg-progress-bar/" target="_blank">在线demo</a> |
+    📘 <a href="../README.md">英文文档</a>
 </p>
 
 ## 浏览器兼容性
@@ -77,6 +77,7 @@ new Vue({
 |`type`|进度条类型|`'circle'`|`'circle'` `'rect'`|
 |`value`|进度条的初始值|`0`|`Number` `String`|
 |`options`|进度条的options对象参数|`{}`|`Object`|
+|`valAddCalBack`|进度条value变化对应节点的回调事件|`[]`|`[{value: 20,func: () => {this.dotValArr.per20 = 20}},{value: 40,func: () => {this.dotValArr.per40 = 40}}]`|
 |`options.radius`|环形进度条半径|`50`|`Number`|
 |`options.circleWidth`|环形进度条线宽|`10`|`Number`|
 |`options.circleWidthArray`|如果你想要不等宽的环形条可以设置环形进度条线宽度组|`null`|`Array`|
@@ -91,8 +92,6 @@ new Vue({
 |`options.rectWidth`|矩形进度条的宽度|`400`|`Number`|
 |`options.rectHeight`|矩形进度条的高度|`40`|`Number`|
 |`options.rectRadius`|矩形进度条的圆角度|`0`|`Number`|
-|`options.valAddCalBack`|进度条value变化对应节点的回调事件|`[]`|`[{value: 20,func: () => {this.dotValArr.per20 = 20}},{value: 40,func: () => {this.dotValArr.per40 = 40}}]`|
-
 
 
 ## License

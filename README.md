@@ -7,8 +7,8 @@
     <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2176389216,1520905711&fm=27&gp=0.jpg" width="350"/>
 </p>                                          
 <p align="center">
-    📘 <a href="https://chenxuan0000.github.io/svg-progress-bar/" target="_blank">Online demo</a> |
-    🌾 <a href="./document/README.md">Chinese Document</a>
+   🌾 <a href="https://chenxuan0000.github.io/svg-progress-bar/" target="_blank">Online demo</a> |
+   📘 <a href="./document/README.md">Chinese Document</a>
 </p>
 
 ## Browser support
@@ -78,6 +78,7 @@ Example:
 |`type`|type of the progress bar|`'circle'`|`'circle'` `'rect'`|
 |`value`|value of the progress bar|`0`|`Number` `String`|
 |`options`|options of the progress bar|`{}`|`Object`|
+|`valAddCalBack`|valAddCalBack of the progress bar|`[]`|`[{value: 20,func: () => {this.dotValArr.per20 = 20}},{value: 40,func: () => {this.dotValArr.per40 = 40}}]`|
 |`options.radius`|radius of the circle progress bar|`50`|`Number`|
 |`options.circleWidth`|stokeWidth of the circle progress bar|`10`|`Number`|
 |`options.circleWidthArray`|circleWidthArray of the circle progress bar if you want wide ranging|`null`|`Array`|
@@ -92,7 +93,6 @@ Example:
 |`options.rectWidth`|rectWidth of the rect progress bar|`400`|`Number`|
 |`options.rectHeight`|rectHeight of the rect progress bar|`40`|`Number`|
 |`options.rectRadius`|rectRadius of the rect progress bar|`0`|`Number`|
-|`options.valAddCalBack`|valAddCalBack of the progress bar|`[]`|`[{value: 20,func: () => {this.dotValArr.per20 = 20}},{value: 40,func: () => {this.dotValArr.per40 = 40}}]`|
 
 
 ## License
