@@ -49,27 +49,17 @@
       }
     },
     mounted () {
-      this.vueProgress = vueProgress.create({
-        dom: this.$refs.progress,
-        type: this.type,
-        value: this.value,
-        valRate: this.options.valRate,
-        radius: this.options.radius,
-        circleWidth: this.options.circleWidth,
-        varyStrokeArray: this.options.varyStrokeArray,
-        circleLineCap: this.options.circleLineCap,
-        maxValue: this.options.maxValue,
-        text: this.options.text,
-        textColor: this.options.textColor,
-        pathColors: this.options.pathColors,
-        gradientColor: this.options.gradientColor,
-        gradientOpacity: this.options.gradientOpacity,
-        duration: this.options.duration,
-        rectWidth: this.options.rectWidth,
-        rectHeight: this.options.rectHeight,
-        rectRadius: this.options.rectRadius,
-        valAddCalBack: this.valAddCalBack
-      });
+      this.vueProgress = vueProgress.create(
+        Object.assign(
+          {
+            dom: this.$refs.progress,
+            type: this.type,
+            value: this.value,
+            valAddCalBack: this.valAddCalBack
+          },
+          this.options
+        )
+      );      
     }
   }
 </script>
