@@ -94,6 +94,8 @@ Example:
 |`options.rectHeight`|rectHeight of the rect progress bar|`40`|`Number`|
 |`options.rectRadius`|rectRadius of the rect progress bar|`0`|`Number`|
 
+## Changelog
+See the GitHub [release history](https://github.com/chenxuan0000/svg-progress-bar/releases).
 
 ## License
 svg-progress-bar is open source and released under the [MIT License](LICENSE).

@@ -93,6 +93,9 @@ Vue.use(svg,{componentName: 'percent-bar'})
 |`options.rectHeight`|矩形进度条的高度|`40`|`Number`|
 |`options.rectRadius`|矩形进度条的圆角度|`0`|`Number`|
 
+## 历史版本
+See the GitHub [历史版本](https://github.com/chenxuan0000/svg-progress-bar/releases).
+
 
 ## License
 svg-progress-bar is open source and released under the [MIT License](LICENSE).
