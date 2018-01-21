@@ -83,7 +83,6 @@ return /******/ (function(modules) { // webpackBootstrap
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.vueProgress = undefined;
 
 var _progressBar = __webpack_require__(1);
 
@@ -91,12 +90,23 @@ var _progressBar2 = _interopRequireDefault(_progressBar);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var svg = void 0;
+
+var defaultComponentName = 'svg-progress-bar';
+
 if (typeof window !== 'undefined' && window.Vue) {
-  Vue.component('svg-progress-bar', _progressBar2.default);
+  Vue.component(defaultComponentName, _progressBar2.default);
+} else {
+  svg = {
+    install: function install(Vue) {
+      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+      Vue.component(options.componentName || defaultComponentName, _progressBar2.default);
+    }
+  };
 }
 
-exports.vueProgress = _progressBar2.default;
-exports.default = _progressBar2.default;
+exports.default = svg;
 
 /***/ }),
 /* 1 */
@@ -894,7 +904,7 @@ vueProgress.prototype = {
 
       if (self._valAddCalBack.length > 0) {
         self._valAddCalBack.forEach(function (item) {
-          if (item.value - oldPercentage > 0 && item.value - oldPercentage < delta) {
+          if (item.value - oldPercentage > 0 && item.value - oldPercentage <= delta) {
             item.func();
           }
         });

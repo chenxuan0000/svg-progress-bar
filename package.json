@@ -1,6 +1,6 @@
 {
   "name": "svg-progress-bar",
-  "version": "0.1.0",
+  "version": "0.1.3",
   "description": "A simple,progress bar for Vue.js",
   "main": "dist/svg-progress-bar.min.js",
   "scripts": {
@@ -23,8 +23,7 @@
     "progress",
     "bar"
   ],
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.0.0",
     "babel-loader": "^7.1.2",

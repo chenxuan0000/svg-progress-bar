@@ -38,15 +38,13 @@ npm install svg-progress-bar --save
 > Specific reference [example-src/App.vue](https://github.com/chenxuan0000/svg-progress-bar/blob/master/examples-src/App.vue)
 
 ```js
+// **main.js**
 import Vue from 'vue'
-import vueProgressBar from 'svg-progress-bar'
-
-new Vue({
-  components: {
-    vueProgressBar
-  }
-})
+import svg from 'svg-progress-bar'
+// you can set componentName default componentName is svg-progress-bar
+Vue.use(svg,{componentName: 'percent-bar'})
 ```
+s
 
 ### normal use (script tag)
 
