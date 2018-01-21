@@ -7,7 +7,8 @@
     <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2176389216,1520905711&fm=27&gp=0.jpg" width="350"/>
 </p>                                          
 <p align="center">
-   🌾 <a href="https://chenxuan0000.github.io/svg-progress-bar/" target="_blank">Online demo</a> |
+   🐾<a href="https://chenxuan0000.github.io/component-document/index_prod.html#/component/svg-bar-default">online demo</a> |
+   🌾 <a href="https://chenxuan0000.github.io/svg-progress-bar/" target="_blank">simple demo</a> |
    📘 <a href="./document/README.md">Chinese Document</a>
 </p>
 
