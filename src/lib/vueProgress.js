@@ -121,7 +121,7 @@ vueProgress.prototype = {
     this._svg = document.createElementNS(this._NS_SVG, 'svg')
     this._svg.setAttribute('xmlns', this._NS_SVG)
     // 生成path or rect
-    this._generatePath(100, false, this._colors[0], this._maxValClass)._generatePath(1, true, this._colors[1], this._valClass)
+    this._generatePath(100, false, this._colors[0], this._maxValClass)._generatePath(0, true, this._colors[1], this._valClass)
     if (this._type === 'circle') {
       this._svgWidth = this._svgHeight = this._svgSize
       this._movingPath = this._svg.getElementsByTagName('path')[1]
