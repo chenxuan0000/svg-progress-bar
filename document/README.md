@@ -40,10 +40,21 @@ npm install svg-progress-bar --save
 
 ```js
 // **main.js**
+// 1.全局 install
 import Vue from 'vue'
 import svg from 'svg-progress-bar'
 // 你可以自己设置全局注册的组件名 默认注册的组件名是 svg-progress-bar
 Vue.use(svg,{componentName: 'percent-bar'})
+
+// 2.单个.vue文件局部注册
+<script>
+  import svg from 'svg-progress-bar'
+   export default {
+      components: {
+        svg
+      }
+   }
+</script>
 ```
 
 ### 普通模式 (script引入 )

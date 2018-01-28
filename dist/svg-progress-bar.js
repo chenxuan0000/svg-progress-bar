@@ -90,23 +90,17 @@ var _progressBar2 = _interopRequireDefault(_progressBar);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var svg = void 0;
+_progressBar2.default.install = function (Vue) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-var defaultComponentName = 'svg-progress-bar';
+  Vue.component(options.componentName || _progressBar2.default.name, _progressBar2.default);
+};
 
 if (typeof window !== 'undefined' && window.Vue) {
-  Vue.component(defaultComponentName, _progressBar2.default);
-} else {
-  svg = {
-    install: function install(Vue) {
-      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-      Vue.component(options.componentName || defaultComponentName, _progressBar2.default);
-    }
-  };
+  Vue.component(_progressBar2.default.name, _progressBar2.default);
 }
 
-exports.default = svg;
+exports.default = _progressBar2.default;
 
 /***/ }),
 /* 1 */
@@ -571,6 +565,7 @@ var _vueProgress2 = _interopRequireDefault(_vueProgress);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
+  name: 'svg-progress-bar',
   data: function data() {
     return {
       vueProgress: null

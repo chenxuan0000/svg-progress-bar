@@ -8,6 +8,7 @@
   import vueProgress from '../lib/vueProgress'
 
   export default {
+    name: 'svg-progress-bar',
     data () {
       return {
         vueProgress: null

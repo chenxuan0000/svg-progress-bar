@@ -44,6 +44,21 @@ import Vue from 'vue'
 import svg from 'svg-progress-bar'
 // you can set componentName default componentName is svg-progress-bar
 Vue.use(svg,{componentName: 'percent-bar'})
+// 1.global install
+import Vue from 'vue'
+import svg from 'svg-progress-bar'
+// you can set custom componentName
+Vue.use(svg,{componentName: 'percent-bar'})
+
+// 2.single .vue file install
+<script>
+  import svg from 'svg-progress-bar'
+   export default {
+      components: {
+        svg
+      }
+   }
+</script>
 ```
 s
 
