@@ -874,7 +874,6 @@ vueProgress.prototype = {
     var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this._duration;
 
     if (this._value == value || isNaN(value)) return this;
-
     var self = this,
         oldPercentage = self.getPercent(),
         delta = this._valRate,
@@ -899,7 +898,7 @@ vueProgress.prototype = {
 
       if (self._valAddCalBack.length > 0) {
         self._valAddCalBack.forEach(function (item) {
-          if (item.value - oldPercentage > 0 && item.value - oldPercentage <= delta) {
+          if (item.value - oldPercentage > 0 && item.value - oldPercentage <= self._valRate) {
             item.func();
           }
         });

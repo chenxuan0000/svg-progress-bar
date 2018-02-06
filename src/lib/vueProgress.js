@@ -247,7 +247,6 @@ vueProgress.prototype = {
 
   update: function (value, duration = this._duration) {
     if (this._value == value || isNaN(value)) return this
-
     let self = this,
       oldPercentage = self.getPercent(), // 初始化百分比
       delta = this._valRate,
@@ -269,7 +268,7 @@ vueProgress.prototype = {
       // 执行this._valAddCalBack的回调
       if (self._valAddCalBack.length > 0) {
         self._valAddCalBack.forEach(item => {
-          if ((item.value - oldPercentage) > 0 && (item.value - oldPercentage) <= delta) {
+          if ((item.value - oldPercentage) > 0 && (item.value - oldPercentage) <= self._valRate) {
             item.func()
           }
         })

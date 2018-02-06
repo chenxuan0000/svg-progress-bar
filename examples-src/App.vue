@@ -39,25 +39,25 @@
                         <p class="ma0 lh-copy f6">vue-progress-bar can also have any arbitrary options .</p>
                     </a>
                     <!--valAddCalBack of svg bar-->
-                    <div :class="box_cls" :style="box_style">
-                        <div :class="label_cls">Custom <span
-                                class="normal"> valAddCalBack of svg bar (带值变化回调的svg bar)</span>
-                        </div>
-                        <div class="tc" style="position: relative;">
-                            <div class="dot-test">
-                                <span class="one" :class="{active: dotValArr.per20}"><span class="text"
-                                                                                           v-text="dotValArr.per20"></span></span>
-                                <span class="two" :class="{active: dotValArr.per40}"><span class="text"
-                                                                                           v-text="dotValArr.per40"></span></span>
-                                <span class="three" :class="{active: dotValArr.per60}"><span class="text"
-                                                                                             v-text="dotValArr.per60"></span></span>
-                                <span class="four" :class="{active: dotValArr.per80}"><span class="text"
-                                                                                            v-text="dotValArr.per80"></span></span>
-                            </div>
-                            <progress-bar value="90" type="rect" :valAddCalBack="valAddCalBack1"
-                                          :options="{rectWidth:800,rectHeight:10,duration: 1800,text: '',pathColors: ['#bbb','yellow']}"></progress-bar>
-                        </div>
-                    </div>
+                    <!--<div :class="box_cls" :style="box_style">-->
+                        <!--<div :class="label_cls">Custom <span-->
+                                <!--class="normal"> valAddCalBack of svg bar (带值变化回调的svg bar)</span>-->
+                        <!--</div>-->
+                        <!--<div class="tc" style="position: relative;">-->
+                            <!--<div class="dot-test">-->
+                                <!--<span class="one" :class="{active: dotValArr.per20}"><span class="text"-->
+                                                                                           <!--v-text="dotValArr.per20"></span></span>-->
+                                <!--<span class="two" :class="{active: dotValArr.per40}"><span class="text"-->
+                                                                                           <!--v-text="dotValArr.per40"></span></span>-->
+                                <!--<span class="three" :class="{active: dotValArr.per60}"><span class="text"-->
+                                                                                             <!--v-text="dotValArr.per60"></span></span>-->
+                                <!--<span class="four" :class="{active: dotValArr.per80}"><span class="text"-->
+                                                                                            <!--v-text="dotValArr.per80"></span></span>-->
+                            <!--</div>-->
+                            <!--<progress-bar value="90" type="rect" :valAddCalBack="valAddCalBack1"-->
+                                          <!--:options="{rectWidth:800,rectHeight:10,duration: 1800,text: '',pathColors: ['#bbb','yellow']}"></progress-bar>-->
+                        <!--</div>-->
+                    <!--</div>-->
                     <!--valAddCalBack of svg bar2-->
                     <div :class="box_cls" :style="box_style">
                         <div :class="label_cls">Custom <span
@@ -75,7 +75,7 @@
                                                                                              v-text="dotValArr2.per4"></span></span>
                             </div>
                             <progress-bar value="90" type="rect" :valAddCalBack="valAddCalBack2"
-                                          :options="{rectWidth:800,rectHeight:10,duration: 1800,text: '',valRate:0.3,pathColors: ['#bbb','yellow']}"></progress-bar>
+                                          :options="{rectWidth:800,rectHeight:10,duration: 1800,text: '',valRate:0.1,pathColors: ['#bbb','yellow']}"></progress-bar>
                         </div>
                     </div>
                     <!--自定义路径颜色-->
