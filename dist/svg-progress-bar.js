@@ -871,8 +871,7 @@ vueProgress.prototype = {
   },
 
   update: function update(value) {
-    var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this._duration;
-
+    var duration = this._duration;
     if (this._value == value || isNaN(value)) return this;
     var self = this,
         oldPercentage = self.getPercent(),
@@ -889,6 +888,10 @@ vueProgress.prototype = {
     delta += newPercentage % 1;
     steps = Math.floor(Math.abs(newPercentage - oldPercentage) / delta);
     stepDuration = duration / steps;
+    console.log(duration);
+
+    console.log(steps);
+    console.log(duration / steps);
     (function animate(lastFrame) {
       if (isGreater) {
         oldPercentage += delta;
