@@ -266,9 +266,10 @@ vueProgress.prototype = {
         oldPercentage -= delta
       }
       // 执行this._valAddCalBack的回调
+      let judgeRate = self._valRate > delta ? self._valRate : delta
       if (self._valAddCalBack.length > 0) {
         self._valAddCalBack.forEach(item => {
-          if ((item.value - oldPercentage) > 0 && (item.value - oldPercentage) <= self._valRate) {
+          if ((item.value - oldPercentage) > 0 && (item.value - oldPercentage) <= judgeRate) {
             item.func()
           }
         })

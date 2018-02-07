@@ -896,9 +896,10 @@ vueProgress.prototype = {
         oldPercentage -= delta;
       }
 
+      var judgeRate = self._valRate > delta ? self._valRate : delta;
       if (self._valAddCalBack.length > 0) {
         self._valAddCalBack.forEach(function (item) {
-          if (item.value - oldPercentage > 0 && item.value - oldPercentage <= self._valRate) {
+          if (item.value - oldPercentage > 0 && item.value - oldPercentage <= judgeRate) {
             item.func();
           }
         });
