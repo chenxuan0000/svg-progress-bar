@@ -260,10 +260,6 @@ vueProgress.prototype = {
     delta += newPercentage % 1
     steps = Math.floor(Math.abs(newPercentage - oldPercentage) / delta)
     stepDuration = duration / steps;
-    console.log(duration);
-
-    console.log(steps);
-    console.log(duration / steps);
     (function animate (lastFrame) {
       if (isGreater) {
         oldPercentage += delta
@@ -291,14 +287,13 @@ vueProgress.prototype = {
       })
 
       let now = Date.now(),
-        deltaTime = now - lastFrame;
-
+        deltaTime = now - lastFrame
       if (deltaTime >= stepDuration) {
         animate(now)
       } else {
         setTimeout(function () {
           animate(Date.now())
-        }, stepDuration - deltaTime)
+        }, stepDuration - deltaTime > 0.1 ? stepDuration - deltaTime : 0.1)
       }
 
     })(Date.now())
