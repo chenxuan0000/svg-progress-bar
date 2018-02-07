@@ -293,7 +293,7 @@ vueProgress.prototype = {
       } else {
         setTimeout(function () {
           animate(Date.now())
-        }, stepDuration - deltaTime > 0.1 ? stepDuration - deltaTime : 0.1)
+        }, stepDuration - deltaTime)
       }
 
     })(Date.now())
