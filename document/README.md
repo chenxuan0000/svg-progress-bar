@@ -7,7 +7,7 @@
     <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2176389216,1520905711&fm=27&gp=0.jpg" width="350"/>
 </p>                                          
 <p align="center">
-    🐾<a href="https://chenxuan0000.github.io/component-document/index_prod.html#/component/svg-bar-default">在线 demo</a> |
+    🐾<a href="http://chenxuan1993.gitee.io/component-document/index_prod#/component/svg-bar-default">在线 demo</a> |
     🌾 <a href="https://chenxuan0000.github.io/svg-progress-bar/" target="_blank">小 demo</a> |
     📘 <a href="../README.md">英文文档</a>
 </p>
