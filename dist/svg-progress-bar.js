@@ -891,7 +891,6 @@ vueProgress.prototype = {
 		isGreater = newPercentage > oldPercentage;
 		delta += newPercentage % 1;
 		steps = Math.floor(Math.abs(newPercentage - oldPercentage) / delta);
-		console.log(delta);
 		stepDuration = duration / steps;(function animate(lastFrame) {
 			if (isGreater) {
 				oldPercentage += delta;
