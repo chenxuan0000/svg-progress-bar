@@ -120,7 +120,7 @@ var Component = __webpack_require__(7)(
   /* cssModules */
   null
 )
-Component.options.__file = "G:\\github\\progress-bar\\src\\components\\progress-bar.vue"
+Component.options.__file = "/Users/chenxuan/Documents/github/svg-progress-bar/src/components/progress-bar.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] progress-bar.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -131,9 +131,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7e523313", Component.options)
+    hotAPI.createRecord("data-v-09c44cdc", Component.options)
   } else {
-    hotAPI.reload("data-v-7e523313", Component.options)
+    hotAPI.reload("data-v-09c44cdc", Component.options)
   }
 })()}
 
@@ -151,13 +151,13 @@ var content = __webpack_require__(3);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("c80c6df4", content, false);
+var update = __webpack_require__(5)("fd09352a", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../node_modules/_css-loader@0.25.0@css-loader/index.js!../../node_modules/_vue-loader@11.3.4@vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-7e523313\",\"scoped\":false,\"hasInlineConfig\":false}!../../node_modules/_vue-loader@11.3.4@vue-loader/lib/selector.js?type=styles&index=0!./progress-bar.vue", function() {
-     var newContent = require("!!../../node_modules/_css-loader@0.25.0@css-loader/index.js!../../node_modules/_vue-loader@11.3.4@vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-7e523313\",\"scoped\":false,\"hasInlineConfig\":false}!../../node_modules/_vue-loader@11.3.4@vue-loader/lib/selector.js?type=styles&index=0!./progress-bar.vue");
+   module.hot.accept("!!../../node_modules/_css-loader@0.25.0@css-loader/index.js!../../node_modules/_vue-loader@11.3.4@vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-09c44cdc\",\"scoped\":false,\"hasInlineConfig\":false}!../../node_modules/_vue-loader@11.3.4@vue-loader/lib/selector.js?type=styles&index=0!./progress-bar.vue", function() {
+     var newContent = require("!!../../node_modules/_css-loader@0.25.0@css-loader/index.js!../../node_modules/_vue-loader@11.3.4@vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-09c44cdc\",\"scoped\":false,\"hasInlineConfig\":false}!../../node_modules/_vue-loader@11.3.4@vue-loader/lib/selector.js?type=styles&index=0!./progress-bar.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -640,297 +640,301 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 var requestAnimFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
-  setTimeout(callback, 1000 / 60);
+	setTimeout(callback, 1000 / 60);
 },
     vueProgress = function vueProgress(options) {
-  var endAngleRad = Math.PI / 180 * 270;
-  this._el = options.dom;
-  this._type = options.type || 'circle';
-  this._valRate = options.valRate || 1;
-  this._rectWidth = options.rectWidth || 200;
-  this._rectHeight = options.rectHeight || 20;
-  this._rectRadius = options.rectRadius || 0;
-  this._radius = options.radius || 50;
-  this._duration = options.duration === undefined ? 500 : options.duration;
-  this._maxValue = options.maxValue || 100;
-  this._valAddCalBack = options.valAddCalBack;
-  this._text = options.text === undefined ? function (value) {
-    return this.htmlifyNumber(value);
-  } : options.text;
-  this._strokeWidth = options.circleWidth || 10;
-  this._strokeWidthArray = options.varyStrokeArray;
-  this._circleLineCap = options.circleLineCap;
-  this._colors = options.pathColors || ['#EEE', '#F00'];
-  this._gradientColor = options.gradientColor;
-  this._gradientOpacity = options.gradientOpacity || [1, 1];
-  this._textColor = options.textColor || '#000';
-  this._value = 0;
-  this._svg = null;
-  this._movingPath = null;
-  this._wrapContainer = null;
-  this._textContainer = null;
-  this._wrpClass = options.wrapClass || 'circles-wrap';
-  this._textClass = options.textClass || 'circles-text';
-  this._valClass = options.valueStrokeClass || 'circles-valueStroke';
-  this._maxValClass = options.maxValueStrokeClass || 'circles-maxValueStroke';
-  this._styleWrapper = options.styleWrapper === false ? false : true;
-  this._styleText = options.styleText === false ? false : true;
-  this._start = -Math.PI / 180 * 90;
-  this._startPrecise = this._precise(this._start);
-  this._circ = endAngleRad - this._start;
-  this._NS_SVG = 'http://www.w3.org/2000/svg';
-  this._generate().update(options.value || 0);
+	var endAngleRad = Math.PI / 180 * 270;
+	this._el = options.dom;
+	this._type = options.type || 'circle';
+	this._valRate = options.valRate || 1;
+	this._rectWidth = options.rectWidth || 200;
+	this._rectHeight = options.rectHeight || 20;
+	this._rectRadius = options.rectRadius || 0;
+	this._radius = options.radius || 50;
+	this._duration = options.duration === undefined ? 500 : options.duration;
+	this._maxValue = options.maxValue || 100;
+	this._valAddCalBack = options.valAddCalBack;
+	this._text = options.text === undefined ? function (value) {
+		return this.htmlifyNumber(value);
+	} : options.text;
+	this._strokeWidth = options.circleWidth || 10;
+	this._strokeWidthArray = options.varyStrokeArray;
+	this._circleLineCap = options.circleLineCap;
+	this._colors = options.pathColors || ['#EEE', '#F00'];
+	this._gradientColor = options.gradientColor;
+	this._gradientOpacity = options.gradientOpacity || [1, 1];
+	this._textColor = options.textColor || '#000';
+	this._value = 0;
+	this._svg = null;
+	this._movingPath = null;
+	this._wrapContainer = null;
+	this._textContainer = null;
+	this._wrpClass = options.wrapClass || 'circles-wrap';
+	this._textClass = options.textClass || 'circles-text';
+	this._valClass = options.valueStrokeClass || 'circles-valueStroke';
+	this._maxValClass = options.maxValueStrokeClass || 'circles-maxValueStroke';
+	this._styleWrapper = options.styleWrapper === false ? false : true;
+	this._styleText = options.styleText === false ? false : true;
+	this._start = -Math.PI / 180 * 90;
+	this._startPrecise = this._precise(this._start);
+	this._circ = endAngleRad - this._start;
+	this._NS_SVG = 'http://www.w3.org/2000/svg';
+	this._lastVal = options.value;
+	this._generate().update(this._lastVal || 0);
 };
 
 vueProgress.prototype = {
-  _generate: function _generate() {
-    this._svgSize = this._radius * 2;
+	_generate: function _generate() {
+		this._svgSize = this._radius * 2;
 
-    this._radiusAdjusted = this._radius - (this._strokeWidthArray ? Math.max(this._strokeWidthArray[0], this._strokeWidthArray[1]) / 2 : this._strokeWidth / 2);
-    this._generateSvg()._generateText()._generateWrapper();
-    this._el.innerHTML = '';
-    this._el.appendChild(this._wrapContainer);
-    return this;
-  },
+		this._radiusAdjusted = this._radius - (this._strokeWidthArray ? Math.max(this._strokeWidthArray[0], this._strokeWidthArray[1]) / 2 : this._strokeWidth / 2);
+		this._generateSvg()._generateText()._generateWrapper();
+		this._el.innerHTML = '';
+		this._el.appendChild(this._wrapContainer);
+		return this;
+	},
 
-  _setCss: function _setCss(dom, cssData) {
-    for (var prop in cssData) {
-      dom.style[prop] = cssData[prop];
-    }
-  },
+	_setCss: function _setCss(dom, cssData) {
+		for (var prop in cssData) {
+			dom.style[prop] = cssData[prop];
+		}
+	},
 
-  _setPercentage: function _setPercentage(percentage) {
-    if (this._type === 'circle') {
-      this._movingPath.setAttribute('d', this._calculatePath(percentage, true));
-    } else if (this._type === 'rect') {
-      this._movingPath.setAttribute('width', this._rectWidth * percentage / 100);
-    }
-    this._textContainer.innerHTML = this._getText(this.getValueFromPercent(percentage));
-  },
+	_setPercentage: function _setPercentage(percentage) {
+		if (this._type === 'circle') {
+			this._movingPath.setAttribute('d', this._calculatePath(percentage, true));
+		} else if (this._type === 'rect') {
+			this._movingPath.setAttribute('width', this._rectWidth * percentage / 100);
+		}
+		this._textContainer.innerHTML = this._getText(this.getValueFromPercent(percentage));
+	},
 
-  _generateWrapper: function _generateWrapper() {
-    this._wrapContainer = document.createElement('div');
-    this._wrapContainer.className = this._wrpClass;
+	_generateWrapper: function _generateWrapper() {
+		this._wrapContainer = document.createElement('div');
+		this._wrapContainer.className = this._wrpClass;
 
-    if (this._styleWrapper) {
-      this._wrapContainer.style.position = 'relative';
-      this._wrapContainer.style.display = 'inline-block';
-    }
-    this._wrapContainer.appendChild(this._svg);
-    this._wrapContainer.appendChild(this._textContainer);
-    return this;
-  },
+		if (this._styleWrapper) {
+			this._wrapContainer.style.position = 'relative';
+			this._wrapContainer.style.display = 'inline-block';
+		}
+		this._wrapContainer.appendChild(this._svg);
+		this._wrapContainer.appendChild(this._textContainer);
+		return this;
+	},
 
-  _generateText: function _generateText() {
-    this._textContainer = document.createElement('div');
-    this._textContainer.className = this._textClass;
-    if (this._styleText) {
-      var style = {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        textAlign: 'center',
-        width: '100%',
-        fontSize: this._radius * 0.6 + 'px',
-        height: this._svgSize + 'px',
-        lineHeight: this._svgSize + 'px',
-        color: this._textColor
-      };
-      this._setCss(this._textContainer, style);
-    }
+	_generateText: function _generateText() {
+		this._textContainer = document.createElement('div');
+		this._textContainer.className = this._textClass;
+		if (this._styleText) {
+			var style = {
+				position: 'absolute',
+				top: 0,
+				left: 0,
+				textAlign: 'center',
+				width: '100%',
+				fontSize: this._radius * 0.6 + 'px',
+				height: this._svgSize + 'px',
+				lineHeight: this._svgSize + 'px',
+				color: this._textColor
+			};
+			this._setCss(this._textContainer, style);
+		}
 
-    this._textContainer.innerHTML = this._getText(0);
-    return this;
-  },
+		this._textContainer.innerHTML = this._getText(0);
+		return this;
+	},
 
-  _getText: function _getText(value) {
-    if (!this._text) return '';
+	_getText: function _getText(value) {
+		if (!this._text) return '';
 
-    if (value === undefined) value = this._value;
+		if (value === undefined) value = this._value;
 
-    value = parseFloat(value.toFixed(2));
+		value = parseFloat(value.toFixed(2));
 
-    return typeof this._text === 'function' ? this._text.call(this, value) : this._text;
-  },
+		return typeof this._text === 'function' ? this._text.call(this, value) : this._text;
+	},
 
-  _generateSvg: function _generateSvg() {
-    this._svg = document.createElementNS(this._NS_SVG, 'svg');
-    this._svg.setAttribute('xmlns', this._NS_SVG);
+	_generateSvg: function _generateSvg() {
+		this._svg = document.createElementNS(this._NS_SVG, 'svg');
+		this._svg.setAttribute('xmlns', this._NS_SVG);
 
-    this._generatePath(100, false, this._colors[0], this._maxValClass)._generatePath(0, true, this._colors[1], this._valClass);
-    if (this._type === 'circle') {
-      this._svgWidth = this._svgHeight = this._svgSize;
-      this._movingPath = this._svg.getElementsByTagName('path')[1];
-      this._svg.setAttribute('height', this._svgHeight);
-    } else if (this._type === 'rect') {
-      this._svgWidth = this._rectWidth;
-      this._svgSize = this._svgHeight = this._rectHeight;
-      this._movingPath = this._svg.getElementsByTagName('rect')[1];
-      this._svg.setAttribute('height', this._strokeWidthArray ? Math.max(this._strokeWidthArray[0], this._strokeWidthArray[1]) : this._svgHeight);
-    }
-    this._svg.setAttribute('width', this._svgWidth);
-    return this;
-  },
+		var _self = this._generatePath(100, false, this._colors[0], this._maxValClass);
+		if (this._lastVal > 0) {
+			_self._generatePath(0, true, this._colors[1], this._valClass);
+		}
+		if (this._type === 'circle') {
+			this._svgWidth = this._svgHeight = this._svgSize;
+			this._movingPath = this._svg.getElementsByTagName('path')[1];
+			this._svg.setAttribute('height', this._svgHeight);
+		} else if (this._type === 'rect') {
+			this._svgWidth = this._rectWidth;
+			this._svgSize = this._svgHeight = this._rectHeight;
+			this._movingPath = this._svg.getElementsByTagName('rect')[1];
+			this._svg.setAttribute('height', this._strokeWidthArray ? Math.max(this._strokeWidthArray[0], this._strokeWidthArray[1]) : this._svgHeight);
+		}
+		this._svg.setAttribute('width', this._svgWidth);
+		return this;
+	},
 
-  _generatePath: function _generatePath(percentage, open, color, pathClass) {
-    var path = void 0,
-        now = +new Date();
-    if (this._gradientColor && open && this._type === 'rect') {
-      var defs = document.createElementNS(this._NS_SVG, 'defs');
-      var linearGradient = document.createElementNS(this._NS_SVG, 'linearGradient');
-      linearGradient.id = now;
-      var stop1 = document.createElementNS(this._NS_SVG, 'stop');
-      stop1.setAttribute('offset', '0%');
-      stop1.setAttribute('stop-color', this._gradientColor[0]);
-      stop1.setAttribute('stop-opacity', this._gradientOpacity[0]);
-      var stop2 = document.createElementNS(this._NS_SVG, 'stop');
-      stop2.setAttribute('offset', '100%');
-      stop2.setAttribute('stop-color', this._gradientColor[1]);
-      stop2.setAttribute('stop-opacity', this._gradientOpacity[1]);
-      linearGradient.appendChild(stop1);
-      linearGradient.appendChild(stop2);
-      defs.appendChild(linearGradient);
-      this._svg.appendChild(defs);
-    }
-    if (this._type === 'circle') {
-      path = document.createElementNS(this._NS_SVG, 'path');
-      this._setCss(path, {
-        'fill': 'transparent',
-        'stroke': color,
-        'stroke-width': this._strokeWidthArray ? open ? this._strokeWidthArray[1] : this._strokeWidthArray[0] : this._strokeWidth
-      });
-      path.setAttribute('d', this._calculatePath(percentage, open));
-      path.setAttribute('class', pathClass);
-      this._circleLineCap && path.setAttribute('stroke-linecap', this._circleLineCap);
-    } else if (this._type === 'rect') {
-      path = document.createElementNS(this._NS_SVG, 'rect');
-      var rectStyle = {
-        'fill': this._gradientColor && open ? 'url(#' + now + ')' : color
-      };
-      path.setAttribute('rx', this._rectRadius);
-      path.setAttribute('ry', this._rectRadius);
-      if (this._strokeWidthArray) {
-        var delated = (this._strokeWidthArray[1] - this._strokeWidthArray[0]) / 2;
-        if (delated > 0) {
-          !open && path.setAttribute('y', delated);
-        } else {
-          open && path.setAttribute('y', -delated);
-        }
-      }
-      path.setAttribute('width', this._rectWidth * percentage / 100);
-      path.setAttribute('height', this._strokeWidthArray ? open ? this._strokeWidthArray[1] : this._strokeWidthArray[0] : this._rectHeight);
-      this._setCss(path, rectStyle);
-    }
-    this._svg.appendChild(path);
-    return this;
-  },
+	_generatePath: function _generatePath(percentage, open, color, pathClass) {
+		var path = void 0,
+		    now = +new Date();
+		if (this._gradientColor && open && this._type === 'rect') {
+			var defs = document.createElementNS(this._NS_SVG, 'defs');
+			var linearGradient = document.createElementNS(this._NS_SVG, 'linearGradient');
+			linearGradient.id = now;
+			var stop1 = document.createElementNS(this._NS_SVG, 'stop');
+			stop1.setAttribute('offset', '0%');
+			stop1.setAttribute('stop-color', this._gradientColor[0]);
+			stop1.setAttribute('stop-opacity', this._gradientOpacity[0]);
+			var stop2 = document.createElementNS(this._NS_SVG, 'stop');
+			stop2.setAttribute('offset', '100%');
+			stop2.setAttribute('stop-color', this._gradientColor[1]);
+			stop2.setAttribute('stop-opacity', this._gradientOpacity[1]);
+			linearGradient.appendChild(stop1);
+			linearGradient.appendChild(stop2);
+			defs.appendChild(linearGradient);
+			this._svg.appendChild(defs);
+		}
+		if (this._type === 'circle') {
+			path = document.createElementNS(this._NS_SVG, 'path');
+			this._setCss(path, {
+				fill: 'transparent',
+				stroke: color,
+				'stroke-width': this._strokeWidthArray ? open ? this._strokeWidthArray[1] : this._strokeWidthArray[0] : this._strokeWidth
+			});
+			path.setAttribute('d', this._calculatePath(percentage, open));
+			path.setAttribute('class', pathClass);
+			this._circleLineCap && path.setAttribute('stroke-linecap', this._circleLineCap);
+		} else if (this._type === 'rect') {
+			path = document.createElementNS(this._NS_SVG, 'rect');
+			var rectStyle = {
+				fill: this._gradientColor && open ? 'url(#' + now + ')' : color
+			};
+			path.setAttribute('rx', this._rectRadius);
+			path.setAttribute('ry', this._rectRadius);
+			if (this._strokeWidthArray) {
+				var delated = (this._strokeWidthArray[1] - this._strokeWidthArray[0]) / 2;
+				if (delated > 0) {
+					!open && path.setAttribute('y', delated);
+				} else {
+					open && path.setAttribute('y', -delated);
+				}
+			}
+			path.setAttribute('width', this._rectWidth * percentage / 100);
+			path.setAttribute('height', this._strokeWidthArray ? open ? this._strokeWidthArray[1] : this._strokeWidthArray[0] : this._rectHeight);
+			this._setCss(path, rectStyle);
+		}
+		this._svg.appendChild(path);
+		return this;
+	},
 
-  _calculatePath: function _calculatePath(percentage, open) {
-    var end = this._start + percentage / 100 * this._circ,
-        endPrecise = this._precise(end);
-    return this._arc(endPrecise, open, percentage);
-  },
+	_calculatePath: function _calculatePath(percentage, open) {
+		var end = this._start + percentage / 100 * this._circ,
+		    endPrecise = this._precise(end);
+		return this._arc(endPrecise, open, percentage);
+	},
 
-  _arc: function _arc(end, open, percentage) {
-    var endAdjusted = end - 0.001,
-        longArc = end - this._startPrecise < Math.PI ? 0 : 1;
+	_arc: function _arc(end, open, percentage) {
+		var endAdjusted = end - 0.001,
+		    longArc = end - this._startPrecise < Math.PI ? 0 : 1;
 
-    return ['M', this._radius + this._radiusAdjusted * Math.cos(this._startPrecise), this._radius + this._radiusAdjusted * Math.sin(this._startPrecise), 'A', this._radiusAdjusted, this._radiusAdjusted, 0, longArc, 1, this._radius + this._radiusAdjusted * Math.cos(endAdjusted), this._radius + this._radiusAdjusted * Math.sin(endAdjusted), open && percentage < 100 ? '' : 'Z'].join(' ');
-  },
+		return ['M', this._radius + this._radiusAdjusted * Math.cos(this._startPrecise), this._radius + this._radiusAdjusted * Math.sin(this._startPrecise), 'A', this._radiusAdjusted, this._radiusAdjusted, 0, longArc, 1, this._radius + this._radiusAdjusted * Math.cos(endAdjusted), this._radius + this._radiusAdjusted * Math.sin(endAdjusted), open && percentage < 100 ? '' : 'Z'].join(' ');
+	},
 
-  _precise: function _precise(value) {
-    return Math.round(value * 1000) / 1000;
-  },
+	_precise: function _precise(value) {
+		return Math.round(value * 1000) / 1000;
+	},
 
-  htmlifyNumber: function htmlifyNumber(number, integerPartClass, decimalPartClass) {
-    integerPartClass = integerPartClass || 'circles-integer';
-    decimalPartClass = decimalPartClass || 'circles-decimals';
+	htmlifyNumber: function htmlifyNumber(number, integerPartClass, decimalPartClass) {
+		integerPartClass = integerPartClass || 'circles-integer';
+		decimalPartClass = decimalPartClass || 'circles-decimals';
 
-    var parts = (number + '').split('.'),
-        html = '<span class="' + integerPartClass + '">' + parts[0] + '</span>';
+		var parts = (number + '').split('.'),
+		    html = '<span class="' + integerPartClass + '">' + parts[0] + '</span>';
 
-    if (parts.length > 1) {
-      html += '.<span class="' + decimalPartClass + '" style="font-size: 0.45em">' + parts[1].substring(0, 2) + '</span>';
-    }
-    return html;
-  },
+		if (parts.length > 1) {
+			html += '.<span class="' + decimalPartClass + '" style="font-size: 0.45em">' + parts[1].substring(0, 2) + '</span>';
+		}
+		return html;
+	},
 
-  getPercent: function getPercent() {
-    return this._value * 100 / this._maxValue;
-  },
+	getPercent: function getPercent() {
+		return this._value * 100 / this._maxValue;
+	},
 
-  getValueFromPercent: function getValueFromPercent(percentage) {
-    return this._maxValue * percentage / 100;
-  },
+	getValueFromPercent: function getValueFromPercent(percentage) {
+		return this._maxValue * percentage / 100;
+	},
 
-  getValue: function getValue() {
-    return this._value;
-  },
+	getValue: function getValue() {
+		return this._value;
+	},
 
-  update: function update(value) {
-    var duration = this._duration;
-    if (this._value == value || isNaN(value)) return this;
-    var self = this,
-        oldPercentage = self.getPercent(),
-        delta = this._valRate,
-        newPercentage = void 0,
-        isGreater = void 0,
-        steps = void 0,
-        stepDuration = void 0;
+	update: function update(value) {
+		var duration = this._duration;
+		if (this._value == value || isNaN(value)) return this;
+		var self = this,
+		    oldPercentage = self.getPercent(),
+		    delta = this._valRate,
+		    newPercentage = void 0,
+		    isGreater = void 0,
+		    steps = void 0,
+		    stepDuration = void 0;
 
-    this._value = Math.min(this._maxValue, Math.max(0, value));
+		this._value = Math.min(this._maxValue, Math.max(0, value));
 
-    newPercentage = self.getPercent();
-    isGreater = newPercentage > oldPercentage;
-    delta += newPercentage % 1;
-    steps = Math.floor(Math.abs(newPercentage - oldPercentage) / delta);
-    stepDuration = duration / steps;
-    (function animate(lastFrame) {
-      if (isGreater) {
-        oldPercentage += delta;
-      } else {
-        oldPercentage -= delta;
-      }
+		newPercentage = self.getPercent();
+		isGreater = newPercentage > oldPercentage;
+		delta += newPercentage % 1;
+		steps = Math.floor(Math.abs(newPercentage - oldPercentage) / delta);
+		console.log(delta);
+		stepDuration = duration / steps;(function animate(lastFrame) {
+			if (isGreater) {
+				oldPercentage += delta;
+			} else {
+				oldPercentage -= delta;
+			}
 
-      var judgeRate = self._valRate > delta ? self._valRate : delta;
-      if (self._valAddCalBack.length > 0) {
-        self._valAddCalBack.forEach(function (item) {
-          if (item.value - oldPercentage > 0 && item.value - oldPercentage <= judgeRate) {
-            item.func();
-          }
-        });
-      }
-      if (isGreater && oldPercentage >= newPercentage || !isGreater && oldPercentage <= newPercentage) {
-        requestAnimFrame(function () {
-          self._setPercentage(newPercentage);
-        });
-        return;
-      }
+			var judgeRate = self._valRate > delta ? self._valRate : delta;
+			if (self._valAddCalBack.length > 0) {
+				self._valAddCalBack.forEach(function (item) {
+					if (item.value - oldPercentage > 0 && item.value - oldPercentage <= judgeRate) {
+						item.func();
+					}
+				});
+			}
+			if (isGreater && oldPercentage >= newPercentage || !isGreater && oldPercentage <= newPercentage) {
+				requestAnimFrame(function () {
+					self._setPercentage(newPercentage);
+				});
+				return;
+			}
 
-      requestAnimFrame(function () {
-        self._setPercentage(oldPercentage);
-      });
+			requestAnimFrame(function () {
+				self._setPercentage(oldPercentage);
+			});
 
-      var now = Date.now(),
-          deltaTime = now - lastFrame;
-      if (deltaTime >= stepDuration) {
-        animate(now);
-      } else {
-        setTimeout(function () {
-          animate(Date.now());
-        }, stepDuration - deltaTime);
-      }
-    })(Date.now());
+			var now = Date.now(),
+			    deltaTime = now - lastFrame;
+			if (deltaTime >= stepDuration) {
+				animate(now);
+			} else {
+				setTimeout(function () {
+					animate(Date.now());
+				}, stepDuration - deltaTime);
+			}
+		})(Date.now());
 
-    return this;
-  }
+		return this;
+	}
 };
 
 vueProgress.create = function (options) {
-  return new vueProgress(options);
+	return new vueProgress(options);
 };
 
 exports.default = vueProgress;
@@ -948,7 +952,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-7e523313", module.exports)
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-09c44cdc", module.exports)
   }
 }
 
