@@ -23,13 +23,13 @@
                     <div :class="box_cls" :style="box_style">
                         <div :class="label_cls">Default circle</div>
                         <div class="tc">
-                            <progress-bar value="0"></progress-bar>
+                            <progress-bar value="10"></progress-bar>
                         </div>
                     </div>
                     <div :class="box_cls" :style="box_style">
                         <div :class="label_cls">Default rect</div>
                         <div class="tc">
-                            <progress-bar value="65" type="rect"></progress-bar>
+                            <progress-bar value="40" type="rect"></progress-bar>
                         </div>
                     </div>
                 </div>

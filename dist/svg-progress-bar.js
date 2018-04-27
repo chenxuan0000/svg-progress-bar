@@ -706,6 +706,9 @@ vueProgress.prototype = {
 	_setPercentage: function _setPercentage(percentage) {
 		if (this._type === 'circle') {
 			this._movingPath.setAttribute('d', this._calculatePath(percentage, true));
+			this._setCss(this._movingPath, {
+				display: percentage <= 0 ? 'none' : 'inline'
+			});
 		} else if (this._type === 'rect') {
 			this._movingPath.setAttribute('width', this._rectWidth * percentage / 100);
 		}
@@ -761,10 +764,7 @@ vueProgress.prototype = {
 		this._svg = document.createElementNS(this._NS_SVG, 'svg');
 		this._svg.setAttribute('xmlns', this._NS_SVG);
 
-		var _self = this._generatePath(100, false, this._colors[0], this._maxValClass);
-		if (this._lastVal > 0) {
-			_self._generatePath(0, true, this._colors[1], this._valClass);
-		}
+		this._generatePath(100, false, this._colors[0], this._maxValClass)._generatePath(0, true, this._colors[1], this._valClass);
 		if (this._type === 'circle') {
 			this._svgWidth = this._svgHeight = this._svgSize;
 			this._movingPath = this._svg.getElementsByTagName('path')[1];
@@ -804,6 +804,7 @@ vueProgress.prototype = {
 			this._setCss(path, {
 				fill: 'transparent',
 				stroke: color,
+				display: this._lastVal <= 0 && open ? 'none' : 'inline',
 				'stroke-width': this._strokeWidthArray ? open ? this._strokeWidthArray[1] : this._strokeWidthArray[0] : this._strokeWidth
 			});
 			path.setAttribute('d', this._calculatePath(percentage, open));
