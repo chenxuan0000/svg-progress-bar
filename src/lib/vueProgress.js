@@ -165,8 +165,7 @@ vueProgress.prototype = {
 	},
 
 	_generatePath: function(percentage, open, color, pathClass) {
-		let path,
-			now = +new Date()
+		let path
 		if (this._gradientColor && open && this._type === 'rect') {
 			// 有渐变色 兼容ie 不能用innerHtml直接写入
 			let defs = document.createElementNS(this._NS_SVG, 'defs')
@@ -174,7 +173,7 @@ vueProgress.prototype = {
 				this._NS_SVG,
 				'linearGradient'
 			)
-			linearGradient.id = now
+			linearGradient.id = String([...this._gradientColor])
 			let stop1 = document.createElementNS(this._NS_SVG, 'stop')
 			stop1.setAttribute('offset', '0%')
 			stop1.setAttribute('stop-color', this._gradientColor[0])
@@ -207,7 +206,7 @@ vueProgress.prototype = {
 		} else if (this._type === 'rect') {
 			path = document.createElementNS(this._NS_SVG, 'rect')
 			let rectStyle = {
-				fill: this._gradientColor && open ? `url(#${now})` : color
+				fill: this._gradientColor && open ? `url(#${[...this._gradientColor]})` : color
 			}
 			path.setAttribute('rx', this._rectRadius)
 			path.setAttribute('ry', this._rectRadius)
