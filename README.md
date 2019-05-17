@@ -97,7 +97,7 @@ Example:
 |`options.radius`|radius of the circle progress bar|`50`|`Number`|
 |`options.circleWidth`|stokeWidth of the circle progress bar|`10`|`Number`|
 |`options.varyStrokeArray`|varyStrokeArray of the circle progress bar if you want wide ranging|`null`|`Array`|
-|`options.circleLinecap`|circleLinecap of the circle progress bar|`''`|`'round',''`|
+|`options.circleLineCap`|circleLineCap of the circle progress bar|`''`|`'round',''`|
 |`options.maxValue`|maxValue of the progress bar|`100`|`Number`|
 |`options.text`|text of the progress bar|`function (value) {return this.htmlifyNumber(value)}`|`Function`|
 |`options.textColor`|text color of the progress bar|`#000`|`color`|
